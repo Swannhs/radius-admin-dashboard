@@ -16,7 +16,7 @@
 
 */
 import Dashboard from "views/Dashboard.js";
-import UserProfile from "views/UserProfile.js";
+import Create from "views/Create.js";
 import TableList from "views/TableList.js";
 import Notifications from "views/Notifications.js";
 
@@ -24,28 +24,28 @@ const dashboardRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    icon: "nc-icon nc-chart-pie-35",
+    icon: "nc-icon fas fa-tachometer-alt",
     component: Dashboard,
     layout: "/admin",
   },
   {
-    path: "/user",
-    name: "User Profile",
-    icon: "nc-icon nc-circle-09",
-    component: UserProfile,
+    path: "/create",
+    name: "Create",
+    icon: "nc-icon fas fa-user-plus",
+    component: Create,
     layout: "/admin",
   },
   {
     path: "/table",
     name: "Table List",
-    icon: "nc-icon nc-notes",
+    icon: "nc-icon fas fa-list",
     component: TableList,
     layout: "/admin",
   },
   {
     path: "/notifications",
     name: "Notifications",
-    icon: "nc-icon nc-bell-55",
+    icon: "nc-icon fas fa-bell",
     component: Notifications,
     layout: "/admin",
   },

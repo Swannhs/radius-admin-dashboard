@@ -13,7 +13,7 @@ import {
     Col,
 } from "react-bootstrap";
 
-function User() {
+function Create() {
     return (
         <>
             <Container fluid>
@@ -214,4 +214,4 @@ function User() {
     );
 }
 
-export default User;
+export default Create;
