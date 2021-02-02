@@ -3,9 +3,9 @@ import './Login.css';
 
 const Login = () => {
     return (
-        <div>
-            <h1>Admin Dashboard</h1>
-            <div className="wrapper fadeInDown">
+        <div className='login-container'>
+            <h1 className='heading-text'>Admin Dashboard</h1>
+            <div className="wrapper-login fadeInDown">
                 <div id="formContent">
                     <form method="post">
                         <div className="alert alert-danger">Invalid username or

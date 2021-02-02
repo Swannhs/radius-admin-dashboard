@@ -12,8 +12,8 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/create",
-    name: "Create",
+    path: '/create',
+    name: "Reseller",
     icon: "nc-icon fas fa-user-plus",
     component: Create,
     layout: "/admin",

@@ -1,6 +1,6 @@
 import React from "react";
-import {useLocation, NavLink} from "react-router-dom";
-import {Link} from "react-router-dom";
+import {useLocation, NavLink, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import {Nav} from "react-bootstrap";
 

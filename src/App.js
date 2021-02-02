@@ -9,9 +9,7 @@ class App extends Component {
 
             <BrowserRouter>
                 <Switch>
-                    <Route path='/login' exact>
-                        <Login/>
-                    </Route>
+                    <Route exact path='/login' component={Login}/>
                     <Route path="/admin" render={(props) => <AdminLayout {...props} />}/>
                     <Redirect from="/" to="/admin/dashboard"/>
                 </Switch>
