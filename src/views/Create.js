@@ -74,22 +74,13 @@ function Create() {
                                     <Row>
                                         <Col className="pl-1" md="4">
                                             <Form.Group>
-                                                <label>First Name</label>
+                                                <label>Full Name</label>
                                                 <Form.Control
-                                                    // placeholder="First Name"
                                                     type="text"
                                                 />
                                             </Form.Group>
                                         </Col>
-                                        <Col className="pl-1" md="6">
-                                            <Form.Group>
-                                                <label>Last Name</label>
-                                                <Form.Control
-                                                    // placeholder="Last Name"
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
+
                                     </Row>
                                     <Row>
                                         <Col className="pl-1" md="4">

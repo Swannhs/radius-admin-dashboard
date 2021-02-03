@@ -46,7 +46,7 @@ function UserList() {
                                     <Row className="justify-content-md-center">
                                         <Col md="auto">
                                             <Modal
-                                                size="sm"
+                                                size="lg"
                                                 show={lgShow}
                                                 onHide={() => setLgShow(false)}
                                                 aria-labelledby="modal-sizes-title-sm"
@@ -86,12 +86,13 @@ function UserList() {
                                                     </Form>
                                                 </Modal.Body>
                                                 <Modal.Footer>
-                                                    <Button className='btn btn-success btn-sm'
+                                                    <Button className='btn btn-success btn-sm mr-3'
                                                             onClick={() => setLgShow(false)}>Update</Button>
-                                                    <Button className='btn btn-danger btn-sm'
+                                                    <Button className='btn btn-danger btn-sm mr-3'
                                                             onClick={() => setLgShow(false)}>Delete</Button>
-                                                    <Button className='btn btn-primary btn-sm'
+                                                    <Button className='btn btn-primary btn-sm mr-3'
                                                             onClick={() => setLgShow(false)}>Close</Button>
+
                                                 </Modal.Footer>
                                             </Modal>
                                         </Col>

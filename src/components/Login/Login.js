@@ -8,10 +8,12 @@ const Login = () => {
             <div className="wrapper-login fadeInDown">
                 <div id="formContent">
                     <form method="post">
-                        <div className="alert alert-danger">Invalid username or
-                            password.
-                        </div>
-                        <div className="alert alert-info">You have been logged out.</div>
+                        {/*<div className="alert alert-danger">*/}
+                        {/*    Invalid username or password.*/}
+                        {/*</div>*/}
+                        {/*<div className="alert alert-info">*/}
+                        {/*    You have been logged out.*/}
+                        {/*</div>*/}
                         <input type="text" id="login" className="fadeIn second" name="username"
                                placeholder="User Name"/>
                         <input type="text" id="password" className="fadeIn third" name="password"
