@@ -5,7 +5,7 @@ import setJwtToken from "../SecurityUtill/setJwtToken";
 export const login = loginRequest => async dispatch => {
     try {
 
-//    Post -> Login Request
+//    Post -> LoginUI Request
 
         const response = await axios.post('http://127.0.0.1/cake3/rd_cake/dashboard/authenticate.json', loginRequest);
 

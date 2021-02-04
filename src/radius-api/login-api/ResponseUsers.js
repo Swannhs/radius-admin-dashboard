@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserApi from "./UserApi";
+import UserApi from "./RadiusApi";
 import {Button} from "semantic-ui-react";
 
 class ResponseUsers extends Component {
