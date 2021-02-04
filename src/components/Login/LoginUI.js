@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './Login.css';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import Token from '../../radius-api/login-api/Token';
+import Cookies from 'universal-cookie';
+
 
 class LoginUI extends Component {
 
@@ -16,12 +19,25 @@ class LoginUI extends Component {
             password: this.state.password
         }
         await RadiusApi.post('/cake3/rd_cake/dashboard/authenticate.json', data)
-            .then(response => console.log(response))
+            .then(response => {
+
+                // Get the token
+                console.log(response)
+
+                // Save token in local storage
+                Token(response.data.data.token);
+
+
+                // Save token in cookies
+                const cookies = new Cookies();
+                cookies.set('token', response.data.data.token);
+
+                localStorage.setItem('Token', response.data.data.token);
+            })
             .catch(error => console.log(error));
     }
 
     render() {
-        const {errors} = this.state;
 
         return (
             <div className='login-container'>
