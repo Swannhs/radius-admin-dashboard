@@ -1,7 +1,8 @@
 import Dashboard from "views/Dashboard.js";
 import Create from "views/Create.js";
-import UserList from "views/UserList.js";
+import UserList from "views/Users/UserList.js";
 import Notifications from "views/Notifications.js";
+import UserApi from "./views/Users/UserApi";
 
 const dashboardRoutes = [
   {
@@ -23,6 +24,7 @@ const dashboardRoutes = [
     name: "User List",
     icon: "nc-icon fas fa-users",
     component: UserList,
+    // component: UserApi,
     layout: "/admin",
   },
   {

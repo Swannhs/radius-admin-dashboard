@@ -12,7 +12,7 @@ class App extends Component {
 
                 {/*------------Public Route -------------------*/}
                 <Route exact path='/login' component={LoginUI}/>
-                <Redirect from="/" to="/login"/>
+                <Redirect exact from="/" to="/login"/>
                 {/*------------Public Route -------------------*/}
 
                 <Switch>

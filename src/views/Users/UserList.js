@@ -7,10 +7,10 @@ import {
     Col, Button, Modal, Form
 } from "react-bootstrap";
 import 'reactjs-popup/dist/index.css';
+import UserApi from "./UserApi";
 
 
 function UserList() {
-    const [lgShow, setLgShow] = useState(false);
 
     return (
         <>
@@ -27,20 +27,21 @@ function UserList() {
                                     <tr className='ct-grid-background'>
                                         <th className="border-0">ID</th>
                                         <th className="border-0">User</th>
-                                        <th className="border-0">Pass</th>
                                         <th className="border-0">Plan</th>
                                         <th className="border-0">Status</th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr onClick={() => setLgShow(true)}>
-                                        <td>1</td>
-                                        <td>Asik</td>
-                                        <td>24455</td>
-                                        <td>Monthly</td>
-                                        <td>Active</td>
-                                    </tr>
+                                    {/*<tr onClick={() => setLgShow(true)}>*/}
+                                    {/*    <td>1</td>*/}
+                                    {/*    <td>Asik</td>*/}
+                                    {/*    <td>24455</td>*/}
+                                    {/*    <td>Monthly</td>*/}
+                                    {/*    <td>Active</td>*/}
+                                    {/*</tr>*/}
+                                    <UserApi/>
+
                                     </tbody>
 
                                     <Row className="justify-content-md-center">
