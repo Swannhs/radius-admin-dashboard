@@ -9,7 +9,14 @@ class LoginUI extends Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        errors: ''
+    }
+
+
+    componentDidMount() {
+        const cookie = new Cookies();
+        cookie.get('Token') ? this.props.history.push('/admin/dashboard') : this.props.history.push('/login');
     }
 
     onLoginSubmit = async event => {
@@ -22,20 +29,21 @@ class LoginUI extends Component {
             .then(response => {
 
                 // Get the token
-                console.log(response)
+                // console.log(response.data.errors)
 
-                // Save token in local storage
-                Token(response.data.data.token);
-
-
-                // Save token in cookies
                 const cookies = new Cookies();
-                cookies.set('token', response.data.data.token);
 
-                localStorage.setItem('Token', response.data.data.token);
+                if (response.data.errors) {
+                    this.setState({errors: response.data.errors})
+                } else {
+                    cookies.set('Token', response.data.data.token);
+                    this.props.history.push('/admin/dashboard')
+
+                }
             })
             .catch(error => console.log(error));
     }
+
 
     render() {
 
@@ -45,9 +53,12 @@ class LoginUI extends Component {
                 <div className="wrapper-login fadeInDown">
                     <div id="formContent">
                         <form method="post" onSubmit={this.onLoginSubmit}>
-                            {/*<div className="alert alert-danger">*/}
-                            {/*    Invalid username or password.*/}
-                            {/*</div>*/}
+                            {
+                                this.state.errors ? <div className="alert alert-danger">
+                                    Invalid username or password.
+                                </div> : null
+                            }
+
                             {/*<div className="alert alert-info">*/}
                             {/*    You have been logged out.*/}
                             {/*</div>*/}

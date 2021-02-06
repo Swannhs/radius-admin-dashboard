@@ -9,11 +9,18 @@ class App extends Component {
         return (
 
             <BrowserRouter>
+
+                {/*------------Public Route -------------------*/}
+                <Route exact path='/login' component={LoginUI}/>
+                <Redirect from="/" to="/login"/>
+                {/*------------Public Route -------------------*/}
+
                 <Switch>
+
+
+
                     <Route exact path='/data' component={ResponseUsers}/>
-                    <Route exact path='/login' component={LoginUI}/>
                     <Route path="/admin" render={(props) => <AdminLayout {...props} />}/>
-                    <Redirect from="/" to="/admin/dashboard"/>
                 </Switch>
             </BrowserRouter>
         );
