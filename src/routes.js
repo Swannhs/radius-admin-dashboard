@@ -21,7 +21,7 @@ const dashboardRoutes = [
   },
   {
     path: "/users",
-    name: "User List",
+    name: "Voucher",
     icon: "nc-icon fas fa-users",
     component: UserList,
     // component: UserApi,

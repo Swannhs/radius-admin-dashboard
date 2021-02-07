@@ -11,6 +11,7 @@ import UserApi from "./UserApi";
 
 
 function UserList() {
+    const [lgShow, setLgShow] = useState(false);
 
     return (
         <>
@@ -19,15 +20,15 @@ function UserList() {
                     <Col md="12">
                         <Card className="strpied-tabled-with-hover">
                             <Card.Header>
-                                <Card.Title as="h4">Users</Card.Title>
+                                <Card.Title as="h4">Voucher</Card.Title>
                             </Card.Header>
                             <Card.Body className="table-full-width table-responsive px-0">
                                 <Table className="table-hover table-striped">
                                     <thead>
                                     <tr className='ct-grid-background'>
-                                        <th className="border-0">ID</th>
+                                        <th className="border-0">Index</th>
                                         <th className="border-0">User</th>
-                                        <th className="border-0">Plan</th>
+                                        <th className="border-0">Password</th>
                                         <th className="border-0">Status</th>
 
                                     </tr>

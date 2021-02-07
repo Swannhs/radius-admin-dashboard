@@ -10,7 +10,7 @@ class UserApi extends Component {
 
 
     componentDidMount() {
-        RadiusApi.get('/cake3/rd_cake/permanent-users/index.json')
+        RadiusApi.get('/cake3/rd_cake/vouchers/index.json')
             .then(response => {
                 this.setState({userData: response.data.items})
             })
@@ -24,9 +24,10 @@ class UserApi extends Component {
                     return (
                         <tr key={item.id}>
                             <td>{item.id}</td>
-                            <td>{item.username}</td>
-                            <td>{item.profile}</td>
-                            <td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>
+                            <td>{item.name}</td>
+                            <td>{item.password}</td>
+                            <td>{item.status}</td>
+                            {/*<td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>*/}
                         </tr>
                     )
                 }) : <tr>
