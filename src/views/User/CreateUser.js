@@ -10,7 +10,7 @@ import {
 } from "react-bootstrap";
 
 
-function Create() {
+function CreateUser() {
 
     return (
 
@@ -124,4 +124,4 @@ function Create() {
     );
 }
 
-export default Create;
+export default CreateUser;

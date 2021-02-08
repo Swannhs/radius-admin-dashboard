@@ -109,7 +109,7 @@ const localizer = momentLocalizer(moment);
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Icons.jsx`
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Maps.jsx`
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Notifications.jsx`
-- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/UserList.jsx`
+- Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/VoucherList.jsx`
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Typography.jsx`
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/Upgrade.jsx`
 - Renamed `src/views/Dashboard/Dashboard.jsx` to `src/views/UserProfile.jsx`

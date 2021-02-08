@@ -1,8 +1,7 @@
 import Dashboard from "views/Dashboard.js";
-import Create from "views/Create.js";
-import UserList from "views/Users/UserList.js";
-import Notifications from "views/Notifications.js";
-import UserApi from "./views/Users/UserApi";
+import CreateUser from "views/User/CreateUser.js";
+import VoucherList from "views/Voucher/VoucherList.js";
+// import Notifications from "views/Notifications.js";
 
 const dashboardRoutes = [
   {
@@ -13,27 +12,26 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: '/create',
+    path: '/create/voucher',
     name: "Reseller",
     icon: "nc-icon fas fa-user-plus",
-    component: Create,
+    component: CreateUser,
     layout: "/admin",
   },
   {
-    path: "/users",
+    path: "/view/voucher",
     name: "Voucher",
     icon: "nc-icon fas fa-users",
-    component: UserList,
-    // component: UserApi,
+    component: VoucherList,
     layout: "/admin",
   },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: "nc-icon fas fa-bell",
-    component: Notifications,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: "nc-icon fas fa-bell",
+  //   component: Notifications,
+  //   layout: "/admin",
+  // },
 ];
 
 export default dashboardRoutes;

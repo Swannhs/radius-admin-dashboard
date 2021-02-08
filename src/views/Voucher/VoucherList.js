@@ -7,10 +7,10 @@ import {
     Col, Button, Modal, Form
 } from "react-bootstrap";
 import 'reactjs-popup/dist/index.css';
-import UserApi from "./UserApi";
+import VoucherApi from "./VoucherApi";
 
 
-function UserList() {
+function VoucherList() {
     const [lgShow, setLgShow] = useState(false);
 
     return (
@@ -41,7 +41,7 @@ function UserList() {
                                     {/*    <td>Monthly</td>*/}
                                     {/*    <td>Active</td>*/}
                                     {/*</tr>*/}
-                                    <UserApi/>
+                                    <VoucherApi/>
 
                                     </tbody>
 
@@ -111,4 +111,4 @@ function UserList() {
     )
 }
 
-export default UserList;
+export default VoucherList;

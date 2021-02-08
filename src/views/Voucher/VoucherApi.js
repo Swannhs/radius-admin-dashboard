@@ -1,15 +1,17 @@
-import React, {Component, useState} from 'react';
-import {Button} from "semantic-ui-react";
+import React, {Component} from 'react';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-class UserApi extends Component {
+
+class VoucherApi extends Component {
     state = {
         userData: []
     }
 
 
-
     componentDidMount() {
+        console.log('VoucherList')
         RadiusApi.get('/cake3/rd_cake/vouchers/index.json')
             .then(response => {
                 this.setState({userData: response.data.items})
@@ -20,7 +22,7 @@ class UserApi extends Component {
     render() {
         return (
             <>
-                {(this.state.userData.length > 0) ? this.state.userData.map((item) => {
+                {(this.state.userData) ? this.state.userData.map((item) => {
                     return (
                         <tr key={item.id}>
                             <td>{item.id}</td>
@@ -30,13 +32,13 @@ class UserApi extends Component {
                             {/*<td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>*/}
                         </tr>
                     )
-                }) : <tr>
-                    <td colSpan="5">Loading...</td>
-                </tr>}
+                }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+
+                }
             </>
 
         );
     }
 }
 
-export default UserApi;
+export default VoucherApi;

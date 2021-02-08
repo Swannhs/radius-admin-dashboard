@@ -1,8 +1,11 @@
 import React from "react";
-import {useLocation, NavLink, Switch} from "react-router-dom";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {useLocation, NavLink, Link} from "react-router-dom";
 
-import {Nav} from "react-bootstrap";
+import {ProSidebar, Menu, MenuItem, SubMenu} from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+import {AiFillDashboard, AiOutlineUser, BsListNested} from "react-icons/all";
+import {Dropdown, Nav, NavItem} from "react-bootstrap";
+import {Navigation} from "react-minimal-side-navigation";
 
 
 function Sidebar({routes}) {
@@ -18,41 +21,76 @@ function Sidebar({routes}) {
                         to="/"
                         className="simple-text logo-mini mx-1"
                     >
-                        <div className="logo-img">
-                            <img
-                                src={require("assets/img/reactlogo.png").default}
-                                alt="..."
-                            />
-                        </div>
+                        {/*-------------------------------- Logo -------------------------*/}
+                        {/*<div className="logo-img">*/}
+                        {/*    <img*/}
+                        {/*        src={require("assets/img/new_logo.png").default}*/}
+                        {/*        alt="..."*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </Link>
                     <Link className="simple-text" to='/'>
                         Radius Admin
                     </Link>
                 </div>
                 <Nav>
-                    {routes.map((prop, key) => {
-                        if (!prop.redirect)
-                            return (
-                                <li
-                                    className={
-                                        prop.upgrade
-                                            ? "active active-pro"
-                                            : activeRoute(prop.layout + prop.path)
-                                    }
-                                    key={key}
-                                >
-                                    <NavLink
-                                        to={prop.layout + prop.path}
-                                        className="nav-link"
-                                        activeClassName="active"
-                                    >
-                                        <i className={prop.icon}/>
-                                        <p>{prop.name}</p>
-                                    </NavLink>
-                                </li>
-                            );
-                        return null;
-                    })}
+                    {/*{routes.map((prop, key) => {*/}
+                    {/*    if (!prop.redirect)*/}
+                    {/*        return (*/}
+                    {/*            <li*/}
+                    {/*                className={*/}
+                    {/*                    prop.upgrade*/}
+                    {/*                        ? "active active-pro"*/}
+                    {/*                        : activeRoute(prop.layout + prop.path)*/}
+                    {/*                }*/}
+                    {/*                key={key}*/}
+                    {/*            >*/}
+                    {/*                <NavLink*/}
+                    {/*                    to={prop.layout + prop.path}*/}
+                    {/*                    className="nav-link"*/}
+                    {/*                    activeClassName="active"*/}
+                    {/*                >*/}
+                    {/*                    <i className={prop.icon}/>*/}
+                    {/*                    <p>{prop.name}</p>*/}
+                    {/*                </NavLink>*/}
+                    {/*            </li>*/}
+                    {/*        );*/}
+                    {/*    return null;*/}
+                    {/*})}*/}
+
+                    <li>
+                        <ProSidebar>
+                            <Menu iconShape="square">
+                                <MenuItem icon={<AiFillDashboard/>}>
+                                    <Link to='/admin/dashboard'>
+                                        Dashboard
+                                    </Link>
+                                </MenuItem>
+                                <SubMenu title="User" icon={<AiOutlineUser/>}>
+                                    <MenuItem>
+                                        <Link to='#'>
+                                            View Users
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem>Create user</MenuItem>
+                                </SubMenu>
+                                <SubMenu title="Voucher" icon={<BsListNested/>}>
+                                    <MenuItem>
+                                        <Link to='/admin/view/voucher'>
+                                            View vouchers
+                                        </Link>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <Link to='/admin/create/voucher'>
+                                            Create voucher
+                                        </Link>
+                                    </MenuItem>
+                                </SubMenu>
+                            </Menu>
+                        </ProSidebar>
+                    </li>
+
+
                 </Nav>
             </div>
         </div>
@@ -60,3 +98,5 @@ function Sidebar({routes}) {
 }
 
 export default Sidebar;
+
+

@@ -132,7 +132,7 @@ function Dashboard() {
                 {/*    <Col md="8">*/}
                 {/*        <Card>*/}
                 {/*            <Card.Header>*/}
-                {/*                <Card.Title as="h4">Users Behavior</Card.Title>*/}
+                {/*                <Card.Title as="h4">Voucher Behavior</Card.Title>*/}
                 {/*                <p className="card-category">24 Hours performance</p>*/}
                 {/*            </Card.Header>*/}
                 {/*            <Card.Body>*/}
@@ -497,7 +497,7 @@ function Dashboard() {
                 {/*                                </Form.Check>*/}
                 {/*                            </td>*/}
                 {/*                            <td>*/}
-                {/*                                Create 4 Invisible User Experiences you Never Knew*/}
+                {/*                                CreateUser 4 Invisible User Experiences you Never Knew*/}
                 {/*                                About*/}
                 {/*                            </td>*/}
                 {/*                            <td className="td-actions text-right">*/}
