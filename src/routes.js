@@ -1,6 +1,7 @@
 import Dashboard from "views/Dashboard.js";
 import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
+import UserList from "./views/User/UserList";
 // import Notifications from "views/Notifications.js";
 
 const dashboardRoutes = [
@@ -10,6 +11,17 @@ const dashboardRoutes = [
     icon: "nc-icon fas fa-tachometer-alt",
     component: Dashboard,
     layout: "/admin",
+  },
+  {
+    path: '/view/users',
+    name: 'UserList',
+    component: UserList,
+    layout: '/admin'
+  },{
+    path: '/create/users',
+    name: 'Create User',
+    component: CreateUser,
+    layout: '/admin'
   },
   {
     path: '/create/voucher',

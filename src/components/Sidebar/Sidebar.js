@@ -68,11 +68,15 @@ function Sidebar() {
                                 </MenuItem>
                                 <SubMenu title="User" icon={<AiOutlineUser/>}>
                                     <MenuItem>
-                                        <Link to='#'>
+                                        <Link to='/admin/view/users'>
                                             View Users
                                         </Link>
                                     </MenuItem>
-                                    <MenuItem>Create user</MenuItem>
+                                    <MenuItem>
+                                        <Link to='/admin/create/users'>
+                                            Create Users
+                                        </Link>
+                                    </MenuItem>
                                 </SubMenu>
                                 <SubMenu title="Voucher" icon={<BsListNested/>}>
                                     <MenuItem>

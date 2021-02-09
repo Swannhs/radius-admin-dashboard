@@ -22,6 +22,7 @@ class LoginUI extends Component {
             : this.props.history.push('/login');
     }
 
+
     coChangeLoading = () => {
         this.setState({
             click: true
