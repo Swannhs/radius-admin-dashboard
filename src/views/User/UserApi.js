@@ -10,7 +10,16 @@ class VoucherApi extends Component {
     }
 
     componentDidMount() {
-        RadiusApi.get('/cake3/rd_cake/access-providers/index.json')
+        RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
+            params: {
+
+                //Assign limit of row showing in table
+
+                page: 1,
+                start: 0,
+                limit: 50
+            }
+        })
             .then(response => {
                 this.setState({userData: response.data.items})
             })
