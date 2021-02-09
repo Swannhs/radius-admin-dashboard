@@ -26,14 +26,13 @@ function VoucherList() {
                                 <Table className="table-hover table-striped">
                                     <thead>
                                     <tr className='ct-grid-background'>
-                                        <th className="border-0">Index</th>
                                         <th className="border-0">User</th>
                                         <th className="border-0">Password</th>
                                         <th className="border-0">Status</th>
+                                        <th className="border-0">Action</th>
 
                                     </tr>
                                     </thead>
-                                    <tbody>
                                     {/*<tr onClick={() => setLgShow(true)}>*/}
                                     {/*    <td>1</td>*/}
                                     {/*    <td>Asik</td>*/}
@@ -43,7 +42,6 @@ function VoucherList() {
                                     {/*</tr>*/}
                                     <VoucherApi/>
 
-                                    </tbody>
 
                                     <Row className="justify-content-md-center">
                                         <Col md="auto">

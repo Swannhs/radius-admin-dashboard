@@ -10,13 +10,22 @@ class LoginUI extends Component {
     state = {
         username: '',
         password: '',
-        errors: ''
+        errors: '',
+        network: '',
+        click: false
     }
 
 
     componentDidMount() {
         const cookie = new Cookies();
-        cookie.get('Token') ? this.props.history.push('/admin/dashboard') : this.props.history.push('/login');
+        cookie.get('Token') ? this.props.history.push('/admin/dashboard')
+            : this.props.history.push('/login');
+    }
+
+    coChangeLoading = () => {
+        this.setState({
+            click: true
+        })
     }
 
     onLoginSubmit = async event => {
@@ -41,7 +50,11 @@ class LoginUI extends Component {
 
                 }
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                this.setState({
+                    network: error
+                })
+            });
     }
 
 
@@ -55,7 +68,12 @@ class LoginUI extends Component {
                         <form method="post" onSubmit={this.onLoginSubmit}>
                             {
                                 this.state.errors ? <div className="alert alert-danger">
-                                    Invalid username or password.
+                                    Invalid username or password
+                                </div> : null
+                            }
+                            {
+                                this.state.network ? <div className="alert alert-danger">
+                                    Invalid response try again later
                                 </div> : null
                             }
 
@@ -71,6 +89,8 @@ class LoginUI extends Component {
                                    onChange={event => this.setState({password: event.target.value})}
                             />
                             <input type="submit" className="fadeIn fourth" defaultValue="Log In"
+                                   value={this.state.click ? "Loading......"
+                                       : 'Login'} onClick={this.coChangeLoading}
                             />
                         </form>
                     </div>

@@ -9,9 +9,7 @@ class VoucherApi extends Component {
         userData: []
     }
 
-
     componentDidMount() {
-        console.log('VoucherList')
         RadiusApi.get('/cake3/rd_cake/vouchers/index.json')
             .then(response => {
                 this.setState({userData: response.data.items})
@@ -21,11 +19,10 @@ class VoucherApi extends Component {
 
     render() {
         return (
-            <>
+            <tbody>
                 {(this.state.userData) ? this.state.userData.map((item) => {
                     return (
                         <tr key={item.id}>
-                            <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.password}</td>
                             <td>{item.status}</td>
@@ -35,7 +32,7 @@ class VoucherApi extends Component {
                 }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
 
                 }
-            </>
+            </tbody>
 
         );
     }

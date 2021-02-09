@@ -8,11 +8,11 @@ import {Dropdown, Nav, NavItem} from "react-bootstrap";
 import {Navigation} from "react-minimal-side-navigation";
 
 
-function Sidebar({routes}) {
-    const location = useLocation();
-    const activeRoute = (routeName) => {
-        return location.pathname.indexOf(routeName) > -1 ? "active" : "";
-    };
+function Sidebar() {
+    // const location = useLocation();
+    // const activeRoute = (routeName) => {
+    //     return location.pathname.indexOf(routeName) > -1 ? "active" : "";
+    // };
     return (
         <div className="sidebar">
             <div className="sidebar-wrapper">
