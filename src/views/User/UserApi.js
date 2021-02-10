@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Cookies from "universal-cookie";
 
 
 class VoucherApi extends Component {
@@ -10,14 +11,17 @@ class VoucherApi extends Component {
     }
 
     componentDidMount() {
+        const cookie = new Cookies
+
+
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
 
                 //Assign limit of row showing in table
-
                 page: 1,
                 start: 0,
-                limit: 50
+                limit: 50,
+                token: cookie.get('Token')
             }
         })
             .then(response => {

@@ -2,7 +2,6 @@ import Dashboard from "views/Dashboard.js";
 import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
 import UserList from "./views/User/UserList";
-// import Notifications from "views/Notifications.js";
 
 const dashboardRoutes = [
   {
@@ -36,14 +35,7 @@ const dashboardRoutes = [
     icon: "nc-icon fas fa-users",
     component: VoucherList,
     layout: "/admin",
-  },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: "nc-icon fas fa-bell",
-  //   component: Notifications,
-  //   layout: "/admin",
-  // },
+  }
 ];
 
 export default dashboardRoutes;

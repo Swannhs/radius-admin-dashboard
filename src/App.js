@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import AdminLayout from "layouts/Admin.js";
+import LoginAction from "./components/Login/LoginAction";
 import LoginUI from "./components/Login/LoginUI";
 
 class App extends Component {
@@ -10,8 +11,8 @@ class App extends Component {
             <BrowserRouter>
 
                 {/*------------Public Route -------------------*/}
+                <Route path='/' component={LoginAction}/>
                 <Route exact path='/login' component={LoginUI}/>
-                <Redirect exact from="/" to="/login"/>
                 {/*------------Public Route -------------------*/}
 
                 <Switch>
