@@ -16,6 +16,13 @@ class LoginUI extends Component {
     }
 
 
+    componentDidMount() {
+        const cookie = new Cookies();
+        cookie.get('Token') ? this.props.history.push('/admin/dashboard')
+            : this.props.history.push('/login');
+    }
+
+
     coChangeLoading = () => {
         this.setState({
             click: true

@@ -1,9 +1,8 @@
 import React from "react";
-import {useLocation} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {Navbar, Container, Nav, Dropdown, Button} from "react-bootstrap";
 
 import routes from "routes.js";
-import Logout from "../Login/Logout";
 import Cookies from "universal-cookie/es6";
 
 function Header() {
@@ -11,10 +10,8 @@ function Header() {
 
 
     const onLogout = () => {
-        console.log('Logout called')
-        const cooke = new Cookies();
+        const cooke = new Cookies;
         cooke.remove('Token');
-        // this.props.history.push('/login')
     }
 
     const mobileSidebarToggle = (e) => {
@@ -174,7 +171,9 @@ function Header() {
                                 href="#pablo"
                                 onClick={(e) => e.preventDefault()}
                             >
-                                <span className="no-icon text-danger" onClick={onLogout} >Log out</span>
+                                <Link to='/login'>
+                                    <span className="no-icon text-danger" onClick={onLogout}>Log out</span>
+                                </Link>
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>
