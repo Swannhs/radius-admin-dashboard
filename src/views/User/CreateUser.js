@@ -1,127 +1,116 @@
-import React from "react";
+import React, {Component} from 'react';
+import './CreateUser.css';
+import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import Cookies from "universal-cookie/lib";
 
-import {
-    Button,
-    Card,
-    Form,
-    Container,
-    Row,
-    Col
-} from "react-bootstrap";
+class CreateUser extends Component {
+
+    state = {
+        username: '',
+        password: ''
+    }
+
+    async componentDidMount() {
+        const cookie = new Cookies();
+        await RadiusApi.get('/cake3/rd_cake/access-providers/child-check.json', {
+            params: {
+                token: cookie.get('Token')
+            }
+        }).then(response => {
+            console.log(response)
+        })
+    }
+
+    onCreateUser = async event => {
+        event.preventDefault();
+
+        const cookie = new Cookies();
+        const data = {
+            parent_id: '0',
+            username: this.state.username,
+            password: this.state.password,
+            language: "4_4",
+            active: 'active'
+        }
+        await RadiusApi.post('/cake3/rd_cake/access-providers/add.json', data, {
+            params: {
+                token: cookie.get('Token')
+            }
+        })
+            .then(response => {
+                console.log(response.data)
+            })
+    }
 
 
-function CreateUser() {
-
-    return (
-
-
-        <>
-            <Container fluid>
-                <Row>
-                    <Col md="8">
-                        <Card>
-                            <Card.Header>
-                                <Card.Title as="h4">Account</Card.Title>
-                            </Card.Header>
-                            <Card.Body>
-                                <Form>
-                                    <Row>
-                                        <Col className="px-1" md="3">
-                                            <Form.Group>
-                                                <label>
-                                                    Email <span className='text-danger'>*</span>
-                                                </label>
-                                                <Form.Control
-                                                    // defaultValue="------"
-                                                    // placeholder="Email"
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col className="px-1" md="3">
-                                            <Form.Group>
-                                                <label>
-                                                    Password <span className='text-danger'>*</span>
-                                                </label>
-                                                <Form.Control
-                                                    // defaultValue="------"
-                                                    // placeholder="Password"
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                        <Col className="pl-1" md="4">
-                                            <Form.Group>
-                                                <label>
-                                                    Role<span className='text-danger'>*</span>
-                                                </label>
-                                                <Form.Group as={Col} controlId="formGridState">
-                                                    <Form.Control as="select" defaultValue="Choose...">
-                                                        <option>Choose...</option>
-                                                        <option>User</option>
-                                                        <option>Reseller</option>
-                                                    </Form.Control>
-                                                </Form.Group>
-                                            </Form.Group>
-
-                                        </Col>
-                                    </Row>
-                                    {/*------------------Optional-----------------*/}
-
-                                    <label className='text-success'>
-                                        <h4>Basic Information</h4>
-                                    </label>
-                                    <Row>
-                                        <Col className="pl-1" md="4">
-                                            <Form.Group>
-                                                <label>Full Name</label>
-                                                <Form.Control
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
-
-                                    </Row>
-                                    <Row>
-                                        <Col className="pl-1" md="4">
-                                            <Form.Group>
-                                                <label>Address</label>
-                                                <Form.Control
-                                                    // placeholder="Address"
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                    </Row>
-                                    <Row>
-                                        <Col className="pl-1" md="4">
-                                            <Form.Group>
-                                                <label>Country</label>
-                                                <Form.Control
-                                                    // placeholder="Country"
-                                                    type="text"
-                                                />
-                                            </Form.Group>
-                                        </Col>
-                                    </Row>
-
-                                    <Button
-                                        className="btn-fill pull-right"
-                                        type="submit"
-                                        variant="info"
-                                    >
-                                        Submit
-                                    </Button>
-                                    <div className="clearfix"/>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    {/*------------------------ End ----------------------------*/}
-                </Row>
-            </Container>
-        </>
-    );
+    render() {
+        return (
+            <div className="container">
+                <div className="card">
+                    <article className="card-body mx-auto" style={{maxWidth: '400px'}}>
+                        <h4 className="card-title mt-3 text-center">Create Account</h4>
+                        <form method='post' onSubmit={this.onCreateUser}>
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-user"/> </span>
+                                </div>
+                                <input name className="form-control" placeholder="User Name" type="text"
+                                       value={this.state.username}
+                                       onChange={event => this.setState({username: event.target.value})}
+                                />
+                            </div>
+                            {/* form-group// */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-envelope"/> </span>
+                                </div>
+                                <input name className="form-control" placeholder="Email address" type="email"/>
+                            </div>
+                            {/* form-group// */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-phone"/> </span>
+                                </div>
+                                <select className="custom-select" style={{maxWidth: '120px'}}>
+                                    <option selected>+971</option>
+                                    <option value={1}>+972</option>
+                                    <option value={2}>+198</option>
+                                    <option value={3}>+701</option>
+                                </select>
+                                <input name className="form-control" placeholder="Phone number" type="text"/>
+                            </div>
+                            {/* form-group// */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-building"/> </span>
+                                </div>
+                                <select className="form-control">
+                                    <option selected> Select job type</option>
+                                    <option>Agent</option>
+                                    <option>Seller</option>
+                                </select>
+                            </div>
+                            {/* form-group end.// */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-lock"/> </span>
+                                </div>
+                                <input className="form-control" placeholder="Create password" type="text"
+                                       value={this.state.password}
+                                       onChange={event => this.setState({password: event.target.value})}
+                                />
+                            </div>
+                            {/* form-group// */}
+                            <div className="form-group">
+                                <button type="submit" className="btn btn-primary"> Create Account</button>
+                            </div>
+                        </form>
+                    </article>
+                </div>
+                {/* card.// */}
+            </div>
+        );
+    }
 }
 
 export default CreateUser;

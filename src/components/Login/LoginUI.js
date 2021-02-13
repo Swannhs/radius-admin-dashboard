@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './Login.css';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
-import Token from '../../radius-api/login-api/Token';
 import Cookies from 'universal-cookie';
 
 
@@ -47,6 +46,7 @@ class LoginUI extends Component {
                     this.setState({errors: response.data.errors})
                 } else {
                     cookies.set('Token', response.data.data.token);
+                    // cookies.set('id', response.data.data.user.id);
                     this.props.history.push('/admin/dashboard')
 
                 }
