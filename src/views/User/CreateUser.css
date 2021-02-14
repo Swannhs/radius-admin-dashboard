@@ -1,9 +1,4 @@
-.container-create {
-    width: 200px;
-    padding: 1rem;
-}
-
-.container-create .box-text{
+.box-text{
     background-color: #00bbff;
     font-size: 1.3rem;
     margin-right: 1rem;
