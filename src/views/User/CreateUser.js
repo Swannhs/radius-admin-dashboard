@@ -2,24 +2,26 @@ import React, {Component} from 'react';
 import './CreateUser.css';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
 import Cookies from "universal-cookie/lib";
+import {Alert} from "react-bootstrap";
 
 class CreateUser extends Component {
 
     state = {
         username: '',
-        password: ''
+        password: '',
+        errors: []
     }
 
-    async componentDidMount() {
-        const cookie = new Cookies();
-        await RadiusApi.get('/cake3/rd_cake/access-providers/child-check.json', {
-            params: {
-                token: cookie.get('Token')
-            }
-        }).then(response => {
-            console.log(response)
-        })
-    }
+    // async componentDidMount() {
+    //     const cookie = new Cookies();
+    //     await RadiusApi.get('/cake3/rd_cake/access-providers/child-check.json', {
+    //         params: {
+    //             token: cookie.get('Token')
+    //         }
+    //     }).then(response => {
+    //         console.log(response)
+    //     })
+    // }
 
     onCreateUser = async event => {
         event.preventDefault();
@@ -38,7 +40,13 @@ class CreateUser extends Component {
             }
         })
             .then(response => {
-                console.log(response.data)
+
+                this.setState({
+                    username: '',
+                    password: '',
+                    errors: response.data.errors
+                })
+                console.log(this.state.errors)
             })
     }
 
@@ -59,6 +67,7 @@ class CreateUser extends Component {
                                        onChange={event => this.setState({username: event.target.value})}
                                 />
                             </div>
+                            <p className='mr-0 p-0 text-danger'>{this.state.errors.username}</p>
                             {/* form-group// */}
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">

@@ -4,12 +4,12 @@ import {
     Table,
     Container,
     Row,
-    Col, Dropdown, DropdownButton
+    Col, Dropdown, DropdownButton, Button
 } from "react-bootstrap";
 import 'reactjs-popup/dist/index.css';
 import UserApi from "./UserApi";
 import './UserList.css';
-import DropdownItem from "react-bootstrap/DropdownItem";
+import {Link} from "react-router-dom";
 
 
 function UserList() {
@@ -20,7 +20,17 @@ function UserList() {
                 <Col md="12">
                     <Card className="strpied-tabled-with-hover">
                         <Card.Header>
-                            <Card.Title as="h4">Users</Card.Title>
+                            <Card.Title as="h4">
+                                <Row>
+                                    <Col xs={{ order: 'first' }}>Users</Col>
+                                    <Col xs={{ order: '12' }}>
+                                        <Link to='/admin/users/create'>
+                                            <Button className='btn-success'>Create</Button>
+                                        </Link>
+                                    </Col>
+                                </Row>
+                            </Card.Title>
+
                         </Card.Header>
                         <Card.Body className="table-full-width table-responsive px-0">
                             <Table className="table-hover table-striped">

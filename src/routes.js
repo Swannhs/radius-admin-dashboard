@@ -13,13 +13,13 @@ const dashboardRoutes = [
         layout: "/admin",
     },
     {
-        path: '/view/users',
+        path: '/users/view',
         name: 'UserList',
         component: UserList,
         layout: '/admin'
     },
     {
-        path: '/create/users',
+        path: '/users/create',
         name: 'Create User',
         component: CreateUser,
         layout: '/admin'
@@ -32,7 +32,7 @@ const dashboardRoutes = [
         layout: "/admin",
     },
     {
-        path: "/view/voucher",
+        path: "/voucher",
         name: "Voucher",
         icon: "nc-icon fas fa-users",
         component: VoucherList,

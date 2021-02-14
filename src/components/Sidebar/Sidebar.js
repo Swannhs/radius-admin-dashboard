@@ -66,30 +66,40 @@ function Sidebar() {
                                         Dashboard
                                     </Link>
                                 </MenuItem>
-                                <SubMenu title="User" icon={<AiOutlineUser/>}>
-                                    <MenuItem>
-                                        <Link to='/admin/view/users'>
-                                            View Users
-                                        </Link>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <Link to='/admin/create/users'>
-                                            Create Users
-                                        </Link>
-                                    </MenuItem>
-                                </SubMenu>
-                                <SubMenu title="Voucher" icon={<BsListNested/>}>
-                                    <MenuItem>
-                                        <Link to='/admin/view/voucher'>
-                                            View vouchers
-                                        </Link>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <Link to='/admin/create/voucher'>
-                                            Create voucher
-                                        </Link>
-                                    </MenuItem>
-                                </SubMenu>
+                                <MenuItem icon={<AiOutlineUser/>}>
+                                    <Link to='/admin/users/view'>
+                                        User
+                                    </Link>
+                                </MenuItem>
+                                <MenuItem icon={<BsListNested/>}>
+                                    <Link to='/admin/voucher'>
+                                        Voucher
+                                    </Link>
+                                </MenuItem>
+                                {/*<SubMenu title="User" icon={<AiOutlineUser/>}>*/}
+                                {/*    <MenuItem>*/}
+                                {/*        <Link to='/admin/view/users'>*/}
+                                {/*            View Users*/}
+                                {/*        </Link>*/}
+                                {/*    </MenuItem>*/}
+                                {/*    <MenuItem>*/}
+                                {/*        <Link to='/admin/create/users'>*/}
+                                {/*            Create Users*/}
+                                {/*        </Link>*/}
+                                {/*    </MenuItem>*/}
+                                {/*</SubMenu>*/}
+                                {/*<SubMenu title="Voucher" icon={<BsListNested/>}>*/}
+                                {/*    <MenuItem>*/}
+                                {/*        <Link to='/admin/view/voucher'>*/}
+                                {/*            View vouchers*/}
+                                {/*        </Link>*/}
+                                {/*    </MenuItem>*/}
+                                {/*    <MenuItem>*/}
+                                {/*        <Link to='/admin/create/voucher'>*/}
+                                {/*            Create voucher*/}
+                                {/*        </Link>*/}
+                                {/*    </MenuItem>*/}
+                                {/*</SubMenu>*/}
                             </Menu>
                         </ProSidebar>
                     </li>
