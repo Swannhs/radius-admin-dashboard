@@ -6,9 +6,15 @@ import Cookies from "universal-cookie/lib";
 
 
 class VoucherApi extends Component {
-    state = {
-        userData: []
+    constructor(props) {
+        super(props);
+
+
+        this.state = {
+            userData: []
+        }
     }
+
 
     componentDidMount() {
         const cookie = new Cookies

@@ -17,7 +17,7 @@ function Header() {
     const mobileSidebarToggle = (e) => {
         e.preventDefault();
         document.documentElement.classList.toggle("nav-open");
-        var node = document.createElement("div");
+        let node = document.createElement("div");
         node.id = "bodyClick";
         node.onclick = function () {
             this.parentElement.removeChild(this);

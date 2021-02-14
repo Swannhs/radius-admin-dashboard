@@ -25,7 +25,7 @@ const dashboardRoutes = [
         layout: '/admin'
     },
     {
-        path: '/create/voucher',
+        path: '/voucher/create',
         name: "Reseller",
         icon: "nc-icon fas fa-user-plus",
         component: CreateVoucher,

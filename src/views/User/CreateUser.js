@@ -2,13 +2,18 @@ import React, {Component} from 'react';
 import './CreateUser.css';
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
 import Cookies from "universal-cookie/lib";
-import {Alert} from "react-bootstrap";
 
 class CreateUser extends Component {
 
     state = {
         username: '',
         password: '',
+        name: '',
+        surname: '',
+        phone: '',
+        email: '',
+        address: '',
+
         errors: []
     }
 
@@ -31,6 +36,11 @@ class CreateUser extends Component {
             parent_id: '0',
             username: this.state.username,
             password: this.state.password,
+            name: this.state.name,
+            surname: this.state.surname,
+            phone: this.state.phone,
+            email: this.state.email,
+            address: this.state.address,
             language: "4_4",
             active: 'active'
         }
@@ -44,6 +54,11 @@ class CreateUser extends Component {
                 this.setState({
                     username: '',
                     password: '',
+                    name: '',
+                    surname: '',
+                    phone: '',
+                    email: '',
+                    address: '',
                     errors: response.data.errors
                 })
                 if (response.data.success) {
@@ -70,27 +85,15 @@ class CreateUser extends Component {
                                 />
                             </div>
                             <p className='mr-0 p-0 text-danger'>{this.state.errors ? this.state.errors.username : null}</p>
-                            {/* form-group// */}
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text"> <i className="fa fa-envelope"/> </span>
+                                    <span className="input-group-text"> <i className="fa fa-lock"/> </span>
                                 </div>
-                                <input name className="form-control" placeholder="Email address" type="email"/>
+                                <input className="form-control" placeholder="Create password" type="text"
+                                       value={this.state.password}
+                                       onChange={event => this.setState({password: event.target.value})}
+                                />
                             </div>
-                            {/* form-group// */}
-                            <div className="form-group input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text"> <i className="fa fa-phone"/> </span>
-                                </div>
-                                <select className="custom-select" style={{maxWidth: '120px'}}>
-                                    <option selected>+971</option>
-                                    <option value={1}>+972</option>
-                                    <option value={2}>+198</option>
-                                    <option value={3}>+701</option>
-                                </select>
-                                <input name className="form-control" placeholder="Phone number" type="text"/>
-                            </div>
-                            {/* form-group// */}
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"> <i className="fa fa-building"/> </span>
@@ -101,16 +104,72 @@ class CreateUser extends Component {
                                     <option>Seller</option>
                                 </select>
                             </div>
-                            {/* form-group end.// */}
+
+
+
+                            {/* -------------------------Personal Info-------------------// */}
+
+
+                            <h4 className="card-title mt-3 text-center">Personal Information</h4>
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
-                                    <span className="input-group-text"> <i className="fa fa-lock"/> </span>
+                                    <span className="input-group-text"> <i className="fa fa-envelope"/> </span>
                                 </div>
-                                <input className="form-control" placeholder="Create password" type="text"
-                                       value={this.state.password}
-                                       onChange={event => this.setState({password: event.target.value})}
+                                <input name className="form-control" placeholder="Email address" type="email"
+                                       value={this.state.email}
+                                       onChange={event => {
+                                           this.setState({email: event.target.value})
+                                       }}
                                 />
                             </div>
+                            {/* form-group// */}
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-phone"/> </span>
+                                </div>
+                                {/*<select className="custom-select" style={{maxWidth: '120px'}}>*/}
+                                {/*    <option selected>+971</option>*/}
+                                {/*    <option value={1}>+972</option>*/}
+                                {/*    <option value={2}>+198</option>*/}
+                                {/*    <option value={3}>+701</option>*/}
+                                {/*</select>*/}
+                                <input name className="form-control" placeholder="Phone number" type="number"
+                                       value={this.state.phone}
+                                       onChange={event => {
+                                           this.setState({phone: event.target.value})
+                                       }}
+                                />
+                            </div>
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-user"/> </span>
+                                </div>
+                                <input name className="form-control" placeholder="Name" type="text"
+                                       value={this.state.name}
+                                       onChange={event => this.setState({name: event.target.value})}
+                                />
+                            </div>
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-user"/> </span>
+                                </div>
+                                <input name className="form-control" placeholder="Surname" type="text"
+                                       value={this.state.surname}
+                                       onChange={event => this.setState({surname: event.target.value})}
+                                />
+                            </div>
+                            <div className="form-group input-group">
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text"> <i className="fa fa-user"/> </span>
+                                </div>
+                                <input name className="form-control" placeholder="Address" type="text"
+                                       value={this.state.address}
+                                       onChange={event => this.setState({address: event.target.value})}
+                                />
+                            </div>
+                            {/* form-group// */}
+                            {/* form-group end.// */}
+
                             {/* form-group// */}
                             <div className="form-group">
                                 <button type="submit" className="btn btn-primary"> Create Account</button>
