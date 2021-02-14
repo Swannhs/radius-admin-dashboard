@@ -16,15 +16,15 @@ class CreateVoucher extends Component {
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
-                    <Col xs="auto" className="w-25 p-3">
+                    <Col xs="auto" className="w-25 p-3 d-inline">
                         <input type='checkbox'/>
                         <span className='p-3'>Add Multiple</span>
                     </Col>
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
-                    <Col xs="auto" className="w-25 p-3">
-                        <Form.Label>Owner</Form.Label>
+                    <div className='container-create d-flex'>
+                        <Form.Label className='box-text'>Owner</Form.Label>
                         <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
                             Preference
                         </Form.Label>
@@ -39,21 +39,20 @@ class CreateVoucher extends Component {
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </Form.Control>
-                    </Col>
+                    </div>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
-                    <Col xs='auto' className='w-25 p-3'>
-                        <Form.Label htmlFor="inputPassword5">Name</Form.Label>
+                    <div className='container-create d-flex'>
+                        <Form.Label className='box-text'>Name</Form.Label>
                         <Form.Control
                             type="text"
                             id="inputPassword5"
-                            className="mr-sm-2"
                             aria-describedby="passwordHelpBlock"
                         />
                         <Form.Text id="passwordHelpBlock" muted>
                             Enter Name
                         </Form.Text>
-                    </Col>
+                    </div>
                 </Form.Group>
                 <Form.Group>
                     <Container className='w-100 d-flex'>

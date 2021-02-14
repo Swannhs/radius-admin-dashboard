@@ -1,15 +1,28 @@
+.container-create {
+    width: 200px;
+    padding: 1rem;
+}
+
+.container-create .box-text{
+    background-color: #00bbff;
+    font-size: 1.3rem;
+    margin-right: 1rem;
+}
+
 .divider-text {
     position: relative;
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 .divider-text span {
     padding: 7px;
     font-size: 12px;
     position: relative;
     z-index: 2;
 }
+
 .divider-text:after {
     content: "";
     position: absolute;
@@ -19,6 +32,7 @@
     left: 0;
     z-index: 1;
 }
-.container-create .card{
+
+.container-create .card {
     background-color: #dddada;
 }
