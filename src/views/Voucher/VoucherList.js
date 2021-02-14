@@ -33,13 +33,8 @@ function VoucherList() {
 
                                     </tr>
                                     </thead>
-                                    {/*<tr onClick={() => setLgShow(true)}>*/}
-                                    {/*    <td>1</td>*/}
-                                    {/*    <td>Asik</td>*/}
-                                    {/*    <td>24455</td>*/}
-                                    {/*    <td>Monthly</td>*/}
-                                    {/*    <td>Active</td>*/}
-                                    {/*</tr>*/}
+
+
                                     <VoucherApi/>
 
 
