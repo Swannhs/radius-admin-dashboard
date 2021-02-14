@@ -46,7 +46,9 @@ class CreateUser extends Component {
                     password: '',
                     errors: response.data.errors
                 })
-                console.log(this.state.errors)
+                if (response.data.success) {
+                    alert('User Created')
+                }
             })
     }
 
@@ -67,7 +69,7 @@ class CreateUser extends Component {
                                        onChange={event => this.setState({username: event.target.value})}
                                 />
                             </div>
-                            <p className='mr-0 p-0 text-danger'>{this.state.errors.username}</p>
+                            <p className='mr-0 p-0 text-danger'>{this.state.errors ? this.state.errors.username : null}</p>
                             {/* form-group// */}
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
