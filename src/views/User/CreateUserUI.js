@@ -38,7 +38,9 @@ class CreateUserUi extends Component {
                                        onChange={event => this.setState({username: event.target.value})}
                                 />
                             </div>
+
                             <p className='mr-0 p-0 text-danger'>{this.state.errors ? this.state.errors.username : null}</p>
+
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"> <i className="fa fa-lock"/> </span>

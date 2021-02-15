@@ -17,19 +17,10 @@ class CreateUser extends Component {
         })
             .then(response => {
 
-                data({
-                    username: '',
-                    password: '',
-                    name: '',
-                    surname: '',
-                    phone: '',
-                    email: '',
-                    address: '',
-                    errors: response.data.errors
-                })
                 if (response.data.success) {
                     alert('User Created')
-                }
+                } else
+                    alert('Enter valid username')
             })
     }
 
