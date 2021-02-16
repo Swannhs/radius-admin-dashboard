@@ -6,9 +6,11 @@ import GetOwner from "./GetOwner";
 
 class CreateVoucherUi extends Component {
     state = {
+        undefined: '',
         user_id: 0,
         id: '',
         name: '',
+        available_to_siblings: '',
         data_limit_enabled: false,
         data_reset: 'daily',
         data_amount: 1,
@@ -39,7 +41,14 @@ class CreateVoucherUi extends Component {
                     {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
                     <Col xs="auto" className="w-50 p-3">
                         <div className='box-text'>
-                            <input type='checkbox'/>
+                            <input type='checkbox'
+                                   value={this.state.undefined}
+                                   onChange={event => {
+                                       this.setState({
+                                           undefined: event.target.checked ? 'on' : null
+                                       })
+                                   }}
+                            />
                             <span className='p-3'>Add Multiple</span>
                         </div>
                     </Col>
@@ -62,6 +71,22 @@ class CreateVoucherUi extends Component {
                                 this.setState({name: event.target.value})
                             }}
                         />
+                    </Col>
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                    {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
+                    <Col xs="auto" className="w-50 p-3">
+                        <div className='box-text'>
+                            <input type='checkbox'
+                                   value={this.state.available_to_siblings}
+                                   onChange={event => {
+                                       this.setState({
+                                           available_to_siblings: event.target.checked ? 'on' : null
+                                       })
+                                   }}
+                            />
+                            <span className='p-3'>Available To Sub-Providers</span>
+                        </div>
                     </Col>
                 </Form.Group>
                 <Form.Group>
