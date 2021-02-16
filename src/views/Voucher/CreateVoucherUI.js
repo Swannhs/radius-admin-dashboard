@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import DataLimit from "./DataLimit";
 import TimeLimit from "./TimeLimit";
 import GetOwner from "./GetOwner";
+import {Col, Container, Form} from "react-bootstrap";
 
 class CreateVoucherUi extends Component {
     state = {
@@ -59,7 +60,7 @@ class CreateVoucherUi extends Component {
 
 
                     {/* -------------------- Retrieving All Agent Start -------------------*/}
-                    <div className='w-50'>
+                    <div className='w-100'>
                         <GetOwner/>
                     </div>
                     {/* -------------------- Retrieving All Agent End -------------------*/}
@@ -95,32 +96,52 @@ class CreateVoucherUi extends Component {
                     </div>
                     {/* ---------------- Available To Sub-Providers End --------------------  */}
 
+
                 </div>
+
+                <div className='w-100 d-block mt-4'>
+                    <Form.Group>
+                        <Container className='w-100 d-flex'>
+                            <Col xs={6}>
+                                <h4>Data Limit</h4>
+                                <label className="switch">
+                                    <input type="checkbox"
+                                           value={this.state.data_limit_enabled}
+                                           onChange={event => {
+                                               this.setState({
+                                                   data_limit_enabled: event.target.checked
+                                               })
+                                           }}
+                                    />
+                                    <span className="slider round"/>
+                                </label>
+                                {this.state.data_limit_enabled ? <DataLimit/> : null}
+                            </Col>
+
+                            <Col xs={6}>
+                                <h4>Time Limit</h4>
+                                <label className="switch">
+                                    <input type="checkbox"
+                                           onChange={event => {
+                                               this.setState({
+                                                   time_limit_enabled: event.target.checked
+                                               })
+                                           }}
+                                    />
+                                    <span className="slider round"/>
+                                </label>
+                                {this.state.time_limit_enabled ? <TimeLimit/> : null}
+                            </Col>
+
+                        </Container>
+                    </Form.Group>
+                </div>
+
 
             </div>
 
 
-            // {/*------------------------------Get Owner ---------------------------*/}
-            //     <GetOwner/>
-            //
 
-            //     </Form.Group>
-            //     <Form.Group controlId="formBasicEmail">
-            //         {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
-            //         <Col xs="auto" className="w-50 p-3">
-            //             <div className='box-text'>
-            //                 <input type='checkbox'
-            //                        value={this.state.available_to_siblings}
-            //                        onChange={event => {
-            //                            this.setState({
-            //                                available_to_siblings: event.target.checked ? 'on' : null
-            //                            })
-            //                        }}
-            //                 />
-            //                 <span className='p-3'>Available To Sub-Providers</span>
-            //             </div>
-            //         </Col>
-            //     </Form.Group>
             //     <Form.Group>
             //         <Container className='w-100 d-flex'>
             //             <Col xs={6}>

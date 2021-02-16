@@ -1,44 +1,46 @@
-import React from 'react';
-import {Form} from "react-bootstrap";
+import React, {Component} from 'react';
+import {Form, Radio} from "semantic-ui-react";
 
-const DataLimit = () => {
-    return (
-            <div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                           value="option1" checked/>
-                    <label className="form-check-label" htmlFor="exampleRadios1">
-                        Never
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
-                           value="option2"/>
-                    <label className="form-check-label" htmlFor="exampleRadios2">
-                        Daily
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
-                           value="option3"/>
-                    <label className="form-check-label" htmlFor="exampleRadios3">
-                        Weekend
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4"
-                           value="option4"/>
-                    <label className="form-check-label" htmlFor="exampleRadios4">
-                        Monthly
-                    </label>
-                </div>
+class DataLimit extends Component {
+    state = {}
+    handleChange = (e, {value}) => this.setState({value})
 
-                <Form.Group controlId="formBasicRangeCustom">
-                    <Form.Label>Range</Form.Label>
-                    <Form.Control type="range" custom />
-                </Form.Group>
-            </div>
-    );
-};
+    render() {
+        return (
+            <>
+                <Form>
+                    <Form.Field>
+                        Selected value: <b>{this.state.value}</b>
+                    </Form.Field>
+                    <Form.Field>
+                        <Radio
+                            label='Choose this'
+                            name='radioGroup'
+                            value='this'
+                            checked={this.state.value === 'this'}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Field>
+                    <Form.Field>
+                        <Radio
+                            label='Or that'
+                            name='radioGroup'
+                            value='that'
+                            checked={this.state.value === 'that'}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Field>
+                </Form>
+
+                {/*<Form.Group controlId="formBasicRangeCustom">*/}
+                {/*    <Form.Label>Range</Form.Label>*/}
+                {/*    <Form.Control type="range" custom />*/}
+                {/*</Form.Group>*/}
+            </>
+        );
+    };
+
+}
+
 
 export default DataLimit;
