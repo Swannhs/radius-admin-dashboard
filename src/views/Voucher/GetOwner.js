@@ -7,6 +7,7 @@ class GetOwner extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            owner: '',
             agents: []
         }
     }
@@ -26,6 +27,16 @@ class GetOwner extends Component {
         })
     }
 
+    // handleChange(event) {
+    //     this.setState({
+    //         owner: event.target.value.toString
+    //     })
+    //     console.log(event.target.value.toString())
+    //     // console.log(this.state.owner)
+    // }
+
+
+
     render() {
         return (
             <Form.Group controlId="formBasicPassword">
@@ -39,12 +50,17 @@ class GetOwner extends Component {
                         className="mr-sm-2"
                         id="inlineFormCustomSelect"
                         custom
+                        value={this.state.owner}
+
+                        onChange={event => {this.setState({
+                            owner: event.target.value
+                        })}}
                     >
-                        <option value="0">Choose...</option>
+                        <option>Choose...</option>
                         {this.state.agents ? this.state.agents.map((items) => {
                             return (
                                 <>
-                                    <option>{items.username}</option>
+                                    <option value={items.username}>{items.username}</option>
                                 </>
                             )
                         }) : null}
