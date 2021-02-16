@@ -4,11 +4,12 @@ import {
     Table,
     Container,
     Row,
-    Col, Button, Modal, Form
+    Col
 } from "react-bootstrap";
 import 'reactjs-popup/dist/index.css';
 import VoucherApi from "./VoucherApi";
 import {Link} from "react-router-dom";
+import {Button} from "semantic-ui-react";
 
 
 function VoucherList() {
@@ -26,7 +27,7 @@ function VoucherList() {
                                         <Col xs={{order: 'first'}}>Voucher</Col>
                                         <Col xs={{order: '12'}}>
                                             <Link to='/admin/voucher/create'>
-                                                <Button className='btn-success'>New</Button>
+                                                <Button className='ui button'>New</Button>
                                             </Link>
                                         </Col>
                                     </Row>

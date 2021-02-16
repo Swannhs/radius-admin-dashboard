@@ -4,12 +4,10 @@ import Cookies from "universal-cookie/lib";
 import RadiusApi from "../../radius-api/login-api/RadiusApi";
 
 class GetOwner extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            owner: '',
-            agents: []
-        }
+    state = {
+        user_id: '',
+        owner: '',
+        agents: []
     }
 
     componentDidMount() {
@@ -27,42 +25,41 @@ class GetOwner extends Component {
         })
     }
 
-    // handleChange(event) {
-    //     this.setState({
-    //         owner: event.target.value.toString
-    //     })
-    //     console.log(event.target.value.toString())
-    //     // console.log(this.state.owner)
-    // }
+
+    onHandleChange = event => {
+        this.setState({
+            user_id: event.target.value
+        })
+    }
+
+    onFormSubmit = event => {
+        event.preventDefault();
+        this.props.onFormSubmit(this.state.user_id)
+    }
 
 
     render() {
         return (
             <div className="w-50 p-3">
                 <h3 className='text-black-50'>Owner</h3>
-                <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
-                    Preference
-                </Form.Label>
                 <Form.Control
                     as="select"
                     className="mr-sm-2"
                     id="inlineFormCustomSelect"
                     custom
-                    value={this.state.owner}
+
+                    value={this.state.user_id}
 
                     onChange={event => {
-                        this.setState({
-                            owner: event.target.value
-                        })
+                        this.onFormSubmit(event)
                     }}
+
                 >
-                    <option>Choose...</option>
+                    <option value='0'>Choose...</option>
                     {this.state.agents ? this.state.agents.map((items) => {
-                        return (
-                            <>
-                                <option value={items.username}>{items.username}</option>
-                            </>
-                        )
+                        return <option value={items.id}>
+                            {items.username}
+                        </option>
                     }) : null}
                 </Form.Control>
             </div>
