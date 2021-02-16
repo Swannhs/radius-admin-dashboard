@@ -39,9 +39,9 @@ class GetOwner extends Component {
 
     render() {
         return (
-            <Form.Group controlId="formBasicPassword">
-                <Col xs="auto" className="w-50 p-3">
-                    <Form.Label>Owner</Form.Label>
+            <Form.Group>
+                <div className="w-50 p-3">
+                    <h3 className='text-black-50'>Owner</h3>
                     <Form.Label className="mr-sm-2" htmlFor="inlineFormCustomSelect" srOnly>
                         Preference
                     </Form.Label>
@@ -65,7 +65,7 @@ class GetOwner extends Component {
                             )
                         }) : null}
                     </Form.Control>
-                </Col>
+                </div>
             </Form.Group>
         );
     }

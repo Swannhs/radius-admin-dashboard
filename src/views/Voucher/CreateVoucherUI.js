@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Button, Col, Container, Form} from "react-bootstrap";
 import DataLimit from "./DataLimit";
 import TimeLimit from "./TimeLimit";
 import GetOwner from "./GetOwner";
@@ -36,12 +35,15 @@ class CreateVoucherUi extends Component {
 
     render() {
         return (
-            <>
-                <Form.Group controlId="formBasicEmail">
-                    {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
-                    <Col xs="auto" className="w-50 p-3">
-                        <div className='box-text'>
-                            <input type='checkbox'
+            <div className='container'>
+                <div className='d-block p-3'>
+
+
+                    <div className='w-25 d-inline p-3'>
+
+                        {/* ---------------- Add Multiple Start --------------------  */}
+                        <div className="ui toggle checkbox">
+                            <input type="checkbox" name="public"
                                    value={this.state.undefined}
                                    onChange={event => {
                                        this.setState({
@@ -49,87 +51,108 @@ class CreateVoucherUi extends Component {
                                        })
                                    }}
                             />
-                            <span className='p-3'>Add Multiple</span>
+                            <label>Add Multiple</label>
                         </div>
-                    </Col>
-                </Form.Group>
+                        {/* ---------------- Add Multiple End --------------------  */}
 
-                {/*------------------------------Get Owner ---------------------------*/}
-                <GetOwner/>
+                    </div>
+
+                    {/* -------------------- Retrieving All Agent Start -------------------*/}
+                    <div className='w-50'>
+                        <GetOwner/>
+                    </div>
+                    {/* -------------------- Retrieving All Agent End -------------------*/}
 
 
-                <Form.Group controlId="formBasicPassword">
-                    <Col xs='auto' className='w-50 p-3'>
-                        <Form.Label htmlFor="inputPassword5">Name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            id="inputPassword5"
-                            className="mr-sm-2"
-                            aria-describedby="passwordHelpBlock"
-                            value={this.state.name}
-                            onChange={event => {
-                                this.setState({name: event.target.value})
-                            }}
+                    <div className='d-block p-3 w-50'>
+                        <h3 className='text-black-50 pr-5'>Name</h3>
+                        <input type="text" className="form-control mr-sm-2" placeholder="Username" aria-label="Username"
+                               value={this.state.name}
+                               onChange={event => {
+                                   this.setState({name: event.target.value})
+                               }}
                         />
-                    </Col>
-                </Form.Group>
-                <Form.Group controlId="formBasicEmail">
-                    {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
-                    <Col xs="auto" className="w-50 p-3">
-                        <div className='box-text'>
-                            <input type='checkbox'
-                                   value={this.state.available_to_siblings}
-                                   onChange={event => {
-                                       this.setState({
-                                           available_to_siblings: event.target.checked ? 'on' : null
-                                       })
-                                   }}
-                            />
-                            <span className='p-3'>Available To Sub-Providers</span>
-                        </div>
-                    </Col>
-                </Form.Group>
-                <Form.Group>
-                    <Container className='w-100 d-flex'>
-                        <Col xs={6}>
-                            <h4>Data Limit</h4>
-                            <label className="switch">
-                                <input type="checkbox"
-                                       value={this.state.data_limit_enabled}
-                                       onChange={event => {
-                                           this.setState({
-                                               data_limit_enabled: event.target.checked
-                                           })
-                                       }}
-                                />
-                                <span className="slider round"/>
-                            </label>
-                            {this.state.data_limit_enabled ? <DataLimit/> : null}
-                        </Col>
+                    </div>
+                </div>
 
-                        <Col xs={6}>
-                            <h4>Time Limit</h4>
-                            <label className="switch">
-                                <input type="checkbox"
-                                       onChange={event => {
-                                           this.setState({
-                                               time_limit_enabled: event.target.checked
-                                           })
-                                       }}
-                                />
-                                <span className="slider round"/>
-                            </label>
-                            {this.state.time_limit_enabled ? <TimeLimit/> : null}
-                        </Col>
+                <div className="ui toggle checkbox">
+                    <input type="checkbox" name="public"
+                           value={this.state.undefined}
+                           onChange={event => {
+                               this.setState({
+                                   undefined: event.target.checked ? 'on' : null
+                               })
+                           }}
+                    />
+                    <label>Add Multiple</label>
+                </div>
 
-                    </Container>
-                </Form.Group>
-                <Col xs='auto' className='w-25 p-3'>
-                    <Button variant="success" type="submit" onClick={this.onFormSubmit}>
-                        Generate
-                    </Button>
-                </Col>
-            </>
+
+            </div>
+
+
+            // {/*------------------------------Get Owner ---------------------------*/}
+            //     <GetOwner/>
+            //
+
+            //     </Form.Group>
+            //     <Form.Group controlId="formBasicEmail">
+            //         {/*<Form.Check type="checkbox" label="Add Multiple" />*/}
+            //         <Col xs="auto" className="w-50 p-3">
+            //             <div className='box-text'>
+            //                 <input type='checkbox'
+            //                        value={this.state.available_to_siblings}
+            //                        onChange={event => {
+            //                            this.setState({
+            //                                available_to_siblings: event.target.checked ? 'on' : null
+            //                            })
+            //                        }}
+            //                 />
+            //                 <span className='p-3'>Available To Sub-Providers</span>
+            //             </div>
+            //         </Col>
+            //     </Form.Group>
+            //     <Form.Group>
+            //         <Container className='w-100 d-flex'>
+            //             <Col xs={6}>
+            //                 <h4>Data Limit</h4>
+            //                 <label className="switch">
+            //                     <input type="checkbox"
+            //                            value={this.state.data_limit_enabled}
+            //                            onChange={event => {
+            //                                this.setState({
+            //                                    data_limit_enabled: event.target.checked
+            //                                })
+            //                            }}
+            //                     />
+            //                     <span className="slider round"/>
+            //                 </label>
+            //                 {this.state.data_limit_enabled ? <DataLimit/> : null}
+            //             </Col>
+            //
+            //             <Col xs={6}>
+            //                 <h4>Time Limit</h4>
+            //                 <label className="switch">
+            //                     <input type="checkbox"
+            //                            onChange={event => {
+            //                                this.setState({
+            //                                    time_limit_enabled: event.target.checked
+            //                                })
+            //                            }}
+            //                     />
+            //                     <span className="slider round"/>
+            //                 </label>
+            //                 {this.state.time_limit_enabled ? <TimeLimit/> : null}
+            //             </Col>
+            //
+            //         </Container>
+            //     </Form.Group>
+            //     <Col xs='auto' className='w-25 p-3'>
+            //         <Button variant="success" type="submit" onClick={this.onFormSubmit}>
+            //             Generate
+            //         </Button>
+            //     </Col>
+            // </>
         );
     }
 }

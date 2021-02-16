@@ -7,6 +7,7 @@ import "./assets/css/animate.min.css";
 import "./assets/scss/main-style.scss";
 import "./assets/css/style.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import 'semantic-ui-css/semantic.min.css'
 
 import App from "./App";
 
