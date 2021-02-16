@@ -53,9 +53,10 @@ class CreateVoucherUi extends Component {
                             />
                             <label>Add Multiple</label>
                         </div>
-                        {/* ---------------- Add Multiple End --------------------  */}
-
                     </div>
+
+                    {/* ---------------- Add Multiple End --------------------  */}
+
 
                     {/* -------------------- Retrieving All Agent Start -------------------*/}
                     <div className='w-50'>
@@ -64,29 +65,37 @@ class CreateVoucherUi extends Component {
                     {/* -------------------- Retrieving All Agent End -------------------*/}
 
 
+                    {/* ---------------- Name Section Start --------------------  */}
                     <div className='d-block p-3 w-50'>
                         <h3 className='text-black-50 pr-5'>Name</h3>
-                        <input type="text" className="form-control mr-sm-2" placeholder="Username" aria-label="Username"
+                        <input type="text" className="form-control mr-sm-2" placeholder="Username"
+                               aria-label="Username"
                                value={this.state.name}
                                onChange={event => {
                                    this.setState({name: event.target.value})
                                }}
                         />
                     </div>
-                </div>
+                    {/* ---------------- Name Section End --------------------  */}
 
-                <div className="ui toggle checkbox">
-                    <input type="checkbox" name="public"
-                           value={this.state.undefined}
-                           onChange={event => {
-                               this.setState({
-                                   undefined: event.target.checked ? 'on' : null
-                               })
-                           }}
-                    />
-                    <label>Add Multiple</label>
-                </div>
 
+                    {/* ---------------- Available To Sub-Providers Start --------------------  */}
+                    <div className='w-25 d-inline p-3'>
+                        <div className="ui toggle checkbox">
+                            <input type="checkbox" name="public"
+                                   value={this.state.available_to_siblings}
+                                   onChange={event => {
+                                       this.setState({
+                                           available_to_siblings: event.target.checked ? 'on' : null
+                                       })
+                                   }}
+                            />
+                            <label>Available To Sub-Providers</label>
+                        </div>
+                    </div>
+                    {/* ---------------- Available To Sub-Providers End --------------------  */}
+
+                </div>
 
             </div>
 
