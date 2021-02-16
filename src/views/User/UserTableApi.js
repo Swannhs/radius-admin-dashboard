@@ -11,12 +11,10 @@ class VoucherApi extends Component {
     }
 
     componentDidMount() {
-        const cookie = new Cookies
-
+        const cookie = new Cookies;
 
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
-
                 //Assign limit of row showing in table
                 page: 1,
                 start: 0,
@@ -26,27 +24,28 @@ class VoucherApi extends Component {
         })
             .then(response => {
                 this.setState({userData: response.data.items})
+                console.log(response.data)
             })
     }
 
 
     render() {
         return (
-            <tbody>
+            <>
             {(this.state.userData) ? this.state.userData.map((item) => {
                 return (
                     <tr key={item.id}>
-                        <td>{item.username}</td>
-                        <td>{item.active ? <span className='text-success'>Active</span>
+                        <td data-label="Name">{item.username}</td>
+                        <td data-label="Age">{item.active ? <span className='text-success'>Active</span>
                             : <span className='text-danger'>Inactive</span>}</td>
-                        <td>{item.owner}</td>
+                        <td data-label="Job">{item.owner}</td>
                     </tr>
+
                 )
             }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80}/>
 
             }
-            </tbody>
-
+            </>
         );
     }
 }
