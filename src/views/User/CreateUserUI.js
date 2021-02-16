@@ -27,7 +27,7 @@ class CreateUserUi extends Component {
             <div className="container">
                 <div className="card">
                     <article className="card-body mx-auto" style={{maxWidth: '400px'}}>
-                        <h4 className="card-title mt-3 text-center">Create Account</h4>
+                        <h2 className="card-title mt-3 text-center">Create Account</h2><br/>
                         <form onSubmit={this.onFormSubmit}>
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
@@ -65,7 +65,7 @@ class CreateUserUi extends Component {
                             {/* -------------------------Personal Info-------------------// */}
 
 
-                            <h4 className="card-title mt-3 text-center">Personal Information</h4>
+                            <h3 className="card-title mt-3 text-center">Personal Information</h3><br/>
                             <div className="form-group input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"> <i className="fa fa-envelope"/> </span>
