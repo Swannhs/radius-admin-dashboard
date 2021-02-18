@@ -6,16 +6,17 @@ import Cookies from "universal-cookie";
 import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
 import {Table} from "react-bootstrap";
 import {Dropdown} from "semantic-ui-react";
+import DeleteUser from "./Action/DeleteUser";
 
 
 class VoucherApi extends Component {
     state = {
+        loading: true,
         userData: []
     }
 
-    componentDidMount() {
+    async getTodos(){
         const cookie = new Cookies;
-
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
                 //Assign limit of row showing in table
@@ -25,19 +26,23 @@ class VoucherApi extends Component {
                 token: cookie.get('Token')
             }
         })
-            .then(response => {
-                this.setState({userData: response.data.items})
-            })
+            .then(response => this.setState({
+                loading: false,
+                userData: response.data.items
+            }))
+    }
+
+    componentDidMount() {
+        this.getTodos();
     }
 
 
-    onEditUser = () => {
 
-    }
+    // componentWillUpdate(nextProps, nextState, nextContext) {
+    //     this.getTodos();
+    // }
 
-    onConfirmDelete = () => {
-        confirm("Are you sure to delete");
-    }
+
 
 
     render() {
@@ -83,8 +88,8 @@ class VoucherApi extends Component {
                                 <td data-label="Action">
                                     <BiReset/>
                                     <AiOutlineEye/>
-                                    <AiFillEdit onClick={this.onEditUser}/>
-                                    <AiFillDelete onClick={this.onConfirmDelete}/>
+                                    <AiFillEdit/>
+                                    <DeleteUser delId={item.id}/>
                                 </td>
 
                             </tr>
