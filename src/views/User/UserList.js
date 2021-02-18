@@ -15,7 +15,8 @@ class VoucherApi extends Component {
         userData: []
     }
 
-    async getTodos(){
+
+    componentDidMount() {
         const cookie = new Cookies;
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
@@ -32,24 +33,32 @@ class VoucherApi extends Component {
             }))
     }
 
-    componentDidMount() {
-        this.getTodos();
-    }
-
-
 
     // componentWillUpdate(nextProps, nextState, nextContext) {
-    //     this.getTodos();
+    //     const cookie = new Cookies;
+    //     RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
+    //         params: {
+    //             //Assign limit of row showing in table
+    //             page: 1,
+    //             start: 0,
+    //             limit: 50,
+    //             token: cookie.get('Token')
+    //         }
+    //     })
+    //         .then(response => {
+    //             if (this.state.userData !== response.data.items){
+    //                 this.setState({
+    //                     userData: response.data.items
+    //                 })
+    //             }
+    //         })
     // }
-
-
 
 
     render() {
         return (
             <>
                 {/*-------------------Table For User lIst Start -----------------*/}
-
                 <Table className="table-hover table-striped" style={{fontSize: '20px'}}>
                     <thead>
                     <tr className='ct-grid-background border-primary'>
@@ -83,15 +92,15 @@ class VoucherApi extends Component {
                         return (
                             <tr key={item.id}>
                                 <td data-label="Name">{item.username}</td>
-                                <td data-label="Status">{item.active ? <span className='text-success'>Active</span>
+                                <td data-label="Status">
+                                    {item.active ? <span className='text-success'>Active</span>
                                     : <span className='text-danger'>Inactive</span>}</td>
                                 <td data-label="Action">
                                     <BiReset/>
                                     <AiOutlineEye/>
-                                    <AiFillEdit/>
+                                    {/*<ModalHandle/>*/}
                                     <DeleteUser delId={item.id}/>
                                 </td>
-
                             </tr>
 
                         )
