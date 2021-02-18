@@ -1,66 +1,104 @@
-import React, {useState} from "react";
-import {
-    Card,
-    Table,
-    Container,
-    Row,
-    Col, Dropdown, DropdownButton, Button
-} from "react-bootstrap";
-import 'reactjs-popup/dist/index.css';
-import UserApi from "./UserApi";
-import './UserList.css';
-import {Link} from "react-router-dom";
+import React, {Component} from 'react';
+import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Cookies from "universal-cookie";
+import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
+import {Table} from "react-bootstrap";
+import {Dropdown} from "semantic-ui-react";
 
 
-function UserList() {
+class VoucherApi extends Component {
+    state = {
+        userData: []
+    }
 
-    return (
-        <Container fluid>
-            <Row>
-                <Col md="12">
-                    <Card className="strpied-tabled-with-hover">
-                        <Card.Header>
-                            <Card.Title as="h4">
-                                <Row>
-                                    <Col xs={{ order: 'first' }}>Users</Col>
-                                    <Col xs={{ order: '12' }}>
-                                        <Link to='/admin/users/create'>
-                                            <Button className='btn-success'>Create</Button>
-                                        </Link>
-                                    </Col>
-                                </Row>
-                            </Card.Title>
+    componentDidMount() {
+        const cookie = new Cookies;
 
-                        </Card.Header>
-                        <Card.Body className="table-full-width table-responsive px-0">
-                            <Table className="table-hover table-striped">
-                                <thead>
-                                <tr className='ct-grid-background border-primary'>
-                                    <th className="border-0" id='border-0'>
-                                        User
-                                        <input type="search" className="form-control" id="search-input"/>
-                                    </th>
-                                    <th className="border-0" id='border-1'>
-                                        Status
-                                        <DropdownButton id='dropdown' title="Filter">
-                                            <Dropdown.Item as="button">Active</Dropdown.Item>
-                                            <Dropdown.Item as="button">Inactive</Dropdown.Item>
-                                        </DropdownButton>
-                                    </th>
-                                    <th className="border-0">Owner</th>
-                                </tr>
-                                </thead>
-                                <UserApi/>
+        RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
+            params: {
+                //Assign limit of row showing in table
+                page: 1,
+                start: 0,
+                limit: 50,
+                token: cookie.get('Token')
+            }
+        })
+            .then(response => {
+                this.setState({userData: response.data.items})
+            })
+    }
 
 
-                            </Table>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+    onEditUser = () => {
 
-        </Container>
-    )
+    }
+
+    onConfirmDelete = () => {
+        confirm("Are you sure to delete");
+    }
+
+
+    render() {
+        return (
+            <>
+                {/*-------------------Table For User lIst Start -----------------*/}
+
+                <Table className="table-hover table-striped" style={{fontSize: '20px'}}>
+                    <thead>
+                    <tr className='ct-grid-background border-primary'>
+                        <th className="border-0" id='border-0'>
+                            <p>Username</p>
+                            <div className="ui input focus">
+                                <input type="text" placeholder="Search..."/>
+                            </div>
+                        </th>
+                        <th className="border-0" id='border-1'>
+                            <p>Status</p>
+
+                            <Dropdown text='Filter' multiple icon='filter'>
+                                <Dropdown.Menu>
+                                    <Dropdown.Menu scrolling>
+                                        <Dropdown.Item>Active</Dropdown.Item>
+                                        <Dropdown.Item>Inactive</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+
+                        </th>
+                        <th className="border-0">
+                            <p>Action</p>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    {(this.state.userData) ? this.state.userData.map((item) => {
+                        return (
+                            <tr key={item.id}>
+                                <td data-label="Name">{item.username}</td>
+                                <td data-label="Status">{item.active ? <span className='text-success'>Active</span>
+                                    : <span className='text-danger'>Inactive</span>}</td>
+                                <td data-label="Action">
+                                    <BiReset/>
+                                    <AiOutlineEye/>
+                                    <AiFillEdit onClick={this.onEditUser}/>
+                                    <AiFillDelete onClick={this.onConfirmDelete}/>
+                                </td>
+
+                            </tr>
+
+                        )
+                    }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80}/>
+
+                    }
+
+                </Table>
+                {/*-------------------Table For User lIst End -----------------*/}
+            </>
+        );
+    }
 }
 
-export default UserList;
+export default VoucherApi;
