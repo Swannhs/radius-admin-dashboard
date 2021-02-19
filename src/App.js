@@ -9,7 +9,6 @@ class App extends Component {
         return (
 
             <BrowserRouter>
-
                 {/*------------Public Route -------------------*/}
                 <Route path='/' component={LoginAction}/>
                 <Route exact path='/login' component={LoginUI}/>

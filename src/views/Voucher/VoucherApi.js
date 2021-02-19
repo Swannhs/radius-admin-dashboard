@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import RadiusApi from "../../radius-api/RadiusApi";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie/lib";

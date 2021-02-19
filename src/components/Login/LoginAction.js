@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RadiusApi from './../../radius-api/login-api/RadiusApi';
+import RadiusApi from '../../radius-api/RadiusApi';
 import Cookies from "universal-cookie";
 
 class LoginAction extends Component {

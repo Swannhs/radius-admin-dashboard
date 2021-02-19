@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import RadiusApi from "../../radius-api/login-api/RadiusApi";
-import Loader from "react-loader-spinner";
+import RadiusApi from "../../radius-api/RadiusApi";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie";
 import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
 import {Table} from "react-bootstrap";
-import {Dropdown} from "semantic-ui-react";
+import {Dropdown, Loader} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
+import EditUser from "./Action/EditUser";
 
 
 class VoucherApi extends Component {
@@ -59,6 +59,7 @@ class VoucherApi extends Component {
         return (
             <>
                 {/*-------------------Table For User lIst Start -----------------*/}
+
                 <Table className="table-hover table-striped" style={{fontSize: '20px'}}>
                     <thead>
                     <tr className='ct-grid-background border-primary'>
@@ -98,7 +99,7 @@ class VoucherApi extends Component {
                                 <td data-label="Action">
                                     <BiReset/>
                                     <AiOutlineEye/>
-                                    {/*<ModalHandle/>*/}
+                                    <EditUser editId={item.id}/>
                                     <DeleteUser delId={item.id}/>
                                 </td>
                             </tr>

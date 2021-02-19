@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import RadiusApi from "../../../radius-api/login-api/RadiusApi";
+import RadiusApi from "../../../radius-api/RadiusApi";
 import Cookies from "universal-cookie/lib";
 import {AiFillDelete} from "react-icons/all";
+import UserList from "../UserList";
+import {Redirect} from "react-router";
 
 class DeleteUser extends Component {
 
@@ -13,7 +15,11 @@ class DeleteUser extends Component {
             params: {
                 token: cookie.get('Token')
             }
-        }).then(response => null)
+        })
+            .then(response => {
+                    <Redirect to='/admin/users/view'/>
+                }
+            )
     }
 
     render() {

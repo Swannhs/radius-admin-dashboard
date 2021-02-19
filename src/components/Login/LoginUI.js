@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Login.css';
-import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import RadiusApi from "../../radius-api/RadiusApi";
 import Cookies from 'universal-cookie';
 
 

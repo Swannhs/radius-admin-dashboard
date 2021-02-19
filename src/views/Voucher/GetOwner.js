@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Form} from "react-bootstrap";
 import Cookies from "universal-cookie/lib";
-import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import RadiusApi from "../../radius-api/RadiusApi";
 
 class GetOwner extends Component {
     constructor(props) {

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './CreateVoucher.css';
 import CreateVoucherUi from "./CreateVoucherUI";
 import Cookies from "universal-cookie/es6";
-import RadiusApi from "../../radius-api/login-api/RadiusApi";
+import RadiusApi from "../../radius-api/RadiusApi";
 
 
 class CreateVoucher extends Component {
