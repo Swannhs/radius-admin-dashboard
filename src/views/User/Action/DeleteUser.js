@@ -17,7 +17,7 @@ class DeleteUser extends Component {
             }
         })
             .then(response => {
-                    <Redirect to='/admin/users/view'/>
+                    // <Redirect to='/admin/users/view'/>
                 }
             )
     }
