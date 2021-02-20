@@ -7,6 +7,7 @@ import {Table} from "react-bootstrap";
 import {Dropdown, Loader} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
 import EditUser from "./Action/EditUser";
+import {Link} from "react-router-dom";
 
 
 class VoucherApi extends Component {
@@ -58,6 +59,22 @@ class VoucherApi extends Component {
     render() {
         return (
             <>
+
+                {/* ---------------- New Button Start ----------------*/}
+                <div className="ui grid">
+                    <div className="four column row">
+                        <div className="right floated column">
+                            <Link to='/admin/users/create'>
+                                <button className='ui button primary'>
+                                    New
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ---------------- New Button End ----------------*/}
+
                 <table className="ui celled padded table" style={{fontSize: '20px'}}>
                     <thead>
                     <tr>
@@ -73,7 +90,7 @@ class VoucherApi extends Component {
                         return (
                             <tr key={item.id}>
                                 <td data-label="Name">{item.username}</td>
-                                <td data-label="Area">{item.username}</td>
+                                <td data-label="Area">{item.address}</td>
                                 <td data-label="Balance">10$</td>
                                 <td data-label="Status">
                                     {item.active ? <span className='text-success'>Active</span>
