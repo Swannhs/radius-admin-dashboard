@@ -3,15 +3,16 @@ import {Link, useLocation} from "react-router-dom";
 import {Navbar, Container, Nav, Dropdown, Button} from "react-bootstrap";
 
 import routes from "routes.js";
-import Cookies from "universal-cookie/es6";
+import Cookies from "universal-cookie/lib";
 
 function Header() {
     const location = useLocation();
 
 
     const onLogout = () => {
-        const cooke = new Cookies;
-        cooke.remove('Token');
+        const cookie = new Cookies;
+        // cookie.set('Token',null)
+        cookie.remove('Token', null);
     }
 
     const mobileSidebarToggle = (e) => {

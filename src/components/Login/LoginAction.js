@@ -6,7 +6,7 @@ class LoginAction extends Component {
 
     componentDidMount() {
         const cookie = new Cookies();
-        cookie.get('Token') ? this.props.history.push('/admin/dashboard')
+        cookie.get('Token') ? this.props.history.push(window.location.pathname)
             : this.props.history.push('/login');
     }
     render() {
