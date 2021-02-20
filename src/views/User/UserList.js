@@ -6,8 +6,8 @@ import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
 import {Table} from "react-bootstrap";
 import {Dropdown, Loader} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
-import EditUser from "./Action/EditUser";
 import {Link} from "react-router-dom";
+import EditUser from "./Action/EditUser";
 
 
 class VoucherApi extends Component {
@@ -55,6 +55,10 @@ class VoucherApi extends Component {
     //         })
     // }
 
+    onEditUser(){
+
+    }
+
 
     render() {
         return (
@@ -75,7 +79,7 @@ class VoucherApi extends Component {
 
                 {/* ---------------- New Button End ----------------*/}
 
-                <table className="table" style={{fontSize: '20px'}}>
+                <table className="table table-bordered" style={{fontSize: '20px'}}>
                     <thead>
                     <tr className='ct-grid-background border-primary'>
                         <th>Name</th>
@@ -98,6 +102,7 @@ class VoucherApi extends Component {
                                 <td data-label="Action">
                                     <BiReset/>
                                     <AiOutlineEye/>
+                                    {/*<AiFillEdit onClick={this.onEditUser}/>*/}
                                     <EditUser editId={item.id}/>
                                     <DeleteUser delId={item.id}/>
                                 </td>

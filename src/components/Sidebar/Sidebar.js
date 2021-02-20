@@ -72,7 +72,7 @@ function Sidebar() {
                                     </Link>
                                 </MenuItem>
                                 <MenuItem icon={<BsListNested/>}>
-                                    <Link to='/admin/voucher'>
+                                    <Link to='/admin/voucher/view'>
                                         Voucher
                                     </Link>
                                 </MenuItem>

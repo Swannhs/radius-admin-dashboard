@@ -3,6 +3,7 @@ import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
 import UserList from "./views/User/UserList";
 import CreateVoucher from "./views/Voucher/CreateVoucher";
+import EditUi from "./views/User/Action/components/EditUI";
 
 const dashboardRoutes = [
     {
@@ -32,12 +33,19 @@ const dashboardRoutes = [
         layout: "/admin",
     },
     {
-        path: "/voucher",
+        path: "/voucher/view",
         name: "Voucher",
         icon: "nc-icon fas fa-users",
         component: VoucherList,
         layout: "/admin",
-    }
+    },
+    {
+        path: "/users/edit",
+        name: "Edit",
+        component: EditUi,
+        layout: "/admin",
+    },
+
 ];
 
 export default dashboardRoutes;
