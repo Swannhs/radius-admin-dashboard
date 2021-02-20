@@ -58,7 +58,7 @@ class VoucherApi extends Component {
     render() {
         return (
             <>
-                <table className="ui celled padded table">
+                <table className="ui celled padded table" style={{fontSize: '20px'}}>
                     <thead>
                     <tr>
                         <th className="single line">Name</th>
@@ -69,25 +69,32 @@ class VoucherApi extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <h2 className="ui center aligned header">A</h2>
-                        </td>
-                        <td className="single line">
-                            Power Output
-                        </td>
-                        <td>
-                            <div className="ui star rating" data-rating={3} data-max-rating={3}/>
-                        </td>
-                        <td className="right aligned">
-                            80% <br/>
-                            <a href="#">18 studies</a>
-                        </td>
-                        <td>Creatine
-                        </td>
-                    </tr>
+                    {(this.state.userData) ? this.state.userData.map((item) => {
+                        return (
+                            <tr key={item.id}>
+                                <td data-label="Name">{item.username}</td>
+                                <td data-label="Area">{item.username}</td>
+                                <td data-label="Balance">10$</td>
+                                <td data-label="Status">
+                                    {item.active ? <span className='text-success'>Active</span>
+                                        : <span className='text-danger'>Inactive</span>}</td>
+                                <td data-label="Action">
+                                    <BiReset/>
+                                    <AiOutlineEye/>
+                                    <EditUser editId={item.id}/>
+                                    <DeleteUser delId={item.id}/>
+                                </td>
+                            </tr>
+
+                        )
+                    }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80}/>
+
+                    }
                     </tbody>
                     <tfoot>
+
+
+                    {/*--------------------Pagination------------------------*/}
                     <tr>
                         <th colSpan={5}>
                             <div className="ui right floated pagination menu">
