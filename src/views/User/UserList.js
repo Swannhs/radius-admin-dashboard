@@ -75,10 +75,10 @@ class VoucherApi extends Component {
 
                 {/* ---------------- New Button End ----------------*/}
 
-                <table className="ui celled padded table" style={{fontSize: '20px'}}>
+                <table className="table" style={{fontSize: '20px'}}>
                     <thead>
-                    <tr>
-                        <th className="single line">Name</th>
+                    <tr className='ct-grid-background border-primary'>
+                        <th>Name</th>
                         <th>Area</th>
                         <th>Balance</th>
                         <th>Status</th>
@@ -130,6 +130,7 @@ class VoucherApi extends Component {
                     </tr>
                     </tfoot>
                 </table>
+                {/*-------------------Table For User lIst Start -----------------*/}
 
 
                 {/*-------------------Table For User lIst Start -----------------*/}
@@ -184,7 +185,6 @@ class VoucherApi extends Component {
                 {/*    }*/}
 
                 {/*</Table>*/}
-                {/*-------------------Table For User lIst End -----------------*/}
             </>
         );
     }
