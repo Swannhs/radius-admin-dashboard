@@ -3,7 +3,6 @@ import RadiusApi from "../../radius-api/RadiusApi";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie";
 import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
-import {Table} from "react-bootstrap";
 import {Dropdown, Loader} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
 import {Link} from "react-router-dom";
@@ -13,8 +12,10 @@ import EditUser from "./Action/EditUser";
 class VoucherApi extends Component {
     state = {
         loading: true,
-        userData: []
+        userData: [],
+        active: null
     }
+
 
 
     componentDidMount() {
@@ -30,8 +31,16 @@ class VoucherApi extends Component {
         })
             .then(response => this.setState({
                 loading: false,
-                userData: response.data.items
+                userData: response.data.items,
             }))
+    }
+
+    onHandleChange = event => {
+        this.setState({
+            active: event.target.checked
+        })
+        console.log(this.state.active)
+
     }
 
 
@@ -65,9 +74,9 @@ class VoucherApi extends Component {
             <>
 
                 {/* ---------------- New Button Start ----------------*/}
-                <div className="ui grid">
-                    <div className="four column row">
-                        <div className="right floated column">
+                <div className="ui grid p-3">
+                    <div className="four column row align-items-end">
+                        <div className="ui right floated column">
                             <Link to='/admin/users/create'>
                                 <button className='ui button primary'>
                                     New
@@ -79,14 +88,37 @@ class VoucherApi extends Component {
 
                 {/* ---------------- New Button End ----------------*/}
 
-                <table className="table table-bordered" style={{fontSize: '20px'}}>
+                <table className="table table-bordered text-center" style={{fontSize: '20px'}}>
                     <thead>
                     <tr className='ct-grid-background border-primary'>
-                        <th>Name</th>
-                        <th>Area</th>
-                        <th>Balance</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th>
+                            <h4 className='text-center'>
+                                Name
+                            </h4>
+                        </th>
+
+                        <th className='d-none d-sm-block'>
+                            <h4 className='text-center'>
+                                Area
+                            </h4>
+                        </th>
+
+                        <th>
+                            <h4 className='text-center'>
+                                Balance
+                            </h4>
+                        </th>
+                        <th>
+                            <h4 className='text-center'>
+                                Status
+                            </h4>
+                        </th>
+                        <th>
+                            <h4 className='text-center'>
+                                Actions
+                            </h4>
+                        </th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -94,11 +126,26 @@ class VoucherApi extends Component {
                         return (
                             <tr key={item.id}>
                                 <td data-label="Name">{item.username}</td>
-                                <td data-label="Area">{item.address}</td>
+                                <td className='d-none d-sm-block' data-label="Area">{item.username}</td>
                                 <td data-label="Balance">10$</td>
-                                <td data-label="Status">
-                                    {item.active ? <span className='text-success'>Active</span>
-                                        : <span className='text-danger'>Inactive</span>}</td>
+
+
+                                {/*<td data-label="Status">*/}
+                                {/*    {item.active ? <span className='text-success'>Active</span>*/}
+                                {/*        : <span className='text-danger'>Inactive</span>}</td>*/}
+
+                                <td>
+                                    <div className="ui toggle checkbox center aligned">
+                                        <input type="checkbox" name="public"
+                                               // value={item.active}
+                                               onChange={event => this.onHandleChange(event)}
+                                               checked={item.active}
+                                        />
+                                        <label/>
+                                    </div>
+                                </td>
+
+
                                 <td data-label="Action">
                                     <BiReset/>
                                     <AiOutlineEye/>
@@ -106,6 +153,7 @@ class VoucherApi extends Component {
                                     <EditUser editId={item.id}/>
                                     <DeleteUser delId={item.id}/>
                                 </td>
+
                             </tr>
 
                         )

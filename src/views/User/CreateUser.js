@@ -18,9 +18,9 @@ class CreateUser extends Component {
             .then(response => {
 
                 if (response.data.success) {
-                    alert('User Created')
+                    alert('User is created successfully')
                 } else
-                    alert('Enter valid username')
+                    alert(response.data.errors.username)
             })
     }
 
