@@ -47,15 +47,16 @@ class VoucherApi extends Component {
     }
 
 
-    onPagination () {
+    onPagination() {
         let totalPage = this.state.total / this.state.limit
-        return  Math.trunc(totalPage) + parseInt((totalPage % 1).toFixed())
+        return Math.trunc(totalPage) + parseInt((totalPage % 1).toFixed())
     }
 
 
     render() {
         return (
             <>
+                <tbody>
                 {(this.state.userData) ? this.state.userData.map((item) => {
                     return (
                         <tr key={item.id}>
@@ -65,26 +66,35 @@ class VoucherApi extends Component {
                             {/*<td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>*/}
                         </tr>
                     )
-                }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80}/>
+                }) : null
                 }
+                </tbody>
 
 
                 {/*--------------------Pagination------------------------*/}
                 <tfoot>
-                <Pagination
-                    defaultActivePage={1}
-                    firstItem={null}
-                    lastItem={null}
-                    pointing
-                    secondary
-                    totalPages={this.onPagination()}
-                    onPageChange={(event, data) => {
-                        this.setState({
-                            page: data.activePage,
-                            start: this.state.page * this.state.limit
-                        })
-                    }}
-                />
+                <tr>
+                    <th colSpan={5}>
+                        <div className="ui right floated pagination menu">
+                            <Pagination
+                                defaultActivePage={1}
+                                firstItem={null}
+                                lastItem={null}
+                                pointing
+                                secondary
+                                totalPages={this.onPagination()}
+                                onPageChange={(event, data) => {
+                                    this.setState({
+                                        page: data.activePage,
+                                        start: this.state.page * this.state.limit
+                                    })
+                                }}
+                            />
+                        </div>
+                    </th>
+
+                </tr>
+
 
                 </tfoot>
 

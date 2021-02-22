@@ -5,19 +5,41 @@ import VoucherApi from "./VoucherApi";
 
 function VoucherList() {
     return (
-        <table className="table table-bordered" style={{fontSize: '20px'}}>
+        <table className="table table-bordered text-center" style={{fontSize: '20px'}}>
             <thead>
             <tr className='ct-grid-background border-primary'>
-                <th>Name</th>
-                <th>Group</th>
-                <th>Plan</th>
+                <th>
+                    <h4 className='text-center'>
+                        Name
+                    </h4>
+                </th>
+
+                {/*<th className='d-none d-sm-block'>*/}
+                {/*    <h4 className='text-center'>*/}
+                {/*        More*/}
+                {/*    </h4>*/}
+                {/*</th>*/}
+
+                <th>
+                    <h4 className='text-center'>
+                        Group
+                    </h4>
+                </th>
+                <th>
+                    <h4 className='text-center'>
+                        Plan
+                    </h4>
+                </th>
+
+
             </tr>
             </thead>
-
-            <tbody>
                 <VoucherApi/>
-
-            </tbody>
+                {/*<tr>*/}
+                {/*    <td>Test</td>*/}
+                {/*    <td>Test</td>*/}
+                {/*    <td>Test</td>*/}
+                {/*</tr>*/}
         </table>
     )
 }
