@@ -3,6 +3,7 @@ import RadiusApi from "../../radius-api/RadiusApi";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie/lib";
+import {Pagination} from "semantic-ui-react";
 
 
 class VoucherApi extends Component {
@@ -13,18 +14,18 @@ class VoucherApi extends Component {
             userData: [],
             page: 1,
             start: 0,
-            total: 0,
+            limit: 10,
+            total: 0
         }
     }
 
-
-    componentDidMount() {
+    onApiCall = () => {
         const cookie = new Cookies
         RadiusApi.get('/cake3/rd_cake/vouchers/index.json', {
             params: {
                 page: this.state.page,
-                start: 0,
-                limit: 5,
+                start: this.state.start,
+                limit: this.state.limit,
                 token: cookie.get('Token')
             }
         })
@@ -34,11 +35,21 @@ class VoucherApi extends Component {
                     total: response.data.totalCount
                 })
             })
-        let i=[1,2,3];
+    }
 
-        i.map((i)=>{
-            console.log(i)
-        })
+
+    componentDidMount() {
+        this.onApiCall()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        prevState.page !== this.state.page ? this.onApiCall() : null
+    }
+
+
+    onPagination () {
+        let totalPage = this.state.total / this.state.limit
+        return  Math.trunc(totalPage) + parseInt((totalPage % 1).toFixed())
     }
 
 
@@ -48,9 +59,9 @@ class VoucherApi extends Component {
                 {(this.state.userData) ? this.state.userData.map((item) => {
                     return (
                         <tr key={item.id}>
+                            <td>{item.name}</td>
                             <td>{item.realm}</td>
                             <td>{item.profile}</td>
-                            <td>{item.name}</td>
                             {/*<td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>*/}
                         </tr>
                     )
@@ -60,22 +71,21 @@ class VoucherApi extends Component {
 
                 {/*--------------------Pagination------------------------*/}
                 <tfoot>
-                <tr>
-                    <th colSpan={5}>
-                        <div className="ui right floated pagination menu">
-                            <a className="icon item">
-                                <i className="left chevron icon"/>
-                            </a>
-                            <span className="item">1</span>
-                            <span className="item">2</span>
-                            <span className="item">3</span>
-                            <span className="item">4</span>
-                            <span className="icon item">
-                                <i className="right chevron icon"/>
-                            </span>
-                        </div>
-                    </th>
-                </tr>
+                <Pagination
+                    defaultActivePage={1}
+                    firstItem={null}
+                    lastItem={null}
+                    pointing
+                    secondary
+                    totalPages={this.onPagination()}
+                    onPageChange={(event, data) => {
+                        this.setState({
+                            page: data.activePage,
+                            start: this.state.page * this.state.limit
+                        })
+                    }}
+                />
+
                 </tfoot>
 
             </>
