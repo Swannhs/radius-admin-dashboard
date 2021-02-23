@@ -3,7 +3,7 @@ import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
 import UserList from "./views/User/UserList";
 import CreateVoucher from "./views/Voucher/CreateVoucher";
-import EditUi from "./views/User/Action/components/EditUI";
+import EditUser from "./views/User/Action/EditUser";
 
 const dashboardRoutes = [
     {
@@ -39,10 +39,11 @@ const dashboardRoutes = [
         component: VoucherList,
         layout: "/admin",
     },
+
     {
-        path: "/users/edit",
+        path: "/users/edit/:id",
         name: "Edit",
-        component: EditUi,
+        component: EditUser,
         layout: "/admin",
     },
 

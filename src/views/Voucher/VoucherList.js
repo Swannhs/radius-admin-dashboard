@@ -30,6 +30,11 @@ function VoucherList() {
                         Plan
                     </h4>
                 </th>
+                <th>
+                    <h4 className='text-center'>
+                        Action
+                    </h4>
+                </th>
 
 
             </tr>

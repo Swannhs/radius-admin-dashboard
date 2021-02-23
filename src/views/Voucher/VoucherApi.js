@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import RadiusApi from "../../radius-api/RadiusApi";
-import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie/lib";
 import {Pagination} from "semantic-ui-react";
+import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
 
 
 class VoucherApi extends Component {
@@ -14,7 +14,7 @@ class VoucherApi extends Component {
             userData: [],
             page: 1,
             start: 0,
-            limit: 10,
+            limit: 13,
             total: 0
         }
     }
@@ -64,6 +64,13 @@ class VoucherApi extends Component {
                             <td>{item.realm}</td>
                             <td>{item.profile}</td>
                             {/*<td>{item.active ? <span>Active</span> : <span>Inactive</span>}</td>*/}
+                            <td data-label="Action">
+                                <BiReset/>
+                                <AiOutlineEye/>
+                                <AiFillEdit/>
+                                <AiFillDelete/>
+                            </td>
+
                         </tr>
                     )
                 }) : null

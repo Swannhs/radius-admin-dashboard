@@ -6,19 +6,21 @@ import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
 import {Dropdown, Loader} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
 import {Link} from "react-router-dom";
-import EditUser from "./Action/EditUser";
 
 
 class VoucherApi extends Component {
-    state = {
-        loading: true,
-        userData: [],
-        active: null
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true,
+            userData: [],
+            active: null,
+            test: ''
+        }
     }
 
-
-
-    componentDidMount() {
+    onApiCall() {
         const cookie = new Cookies;
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
@@ -35,37 +37,17 @@ class VoucherApi extends Component {
             }))
     }
 
+
+    componentDidMount() {
+        this.onApiCall();
+    }
+
+
+
     onHandleChange = event => {
         this.setState({
             active: event.target.checked
         })
-        console.log(this.state.active)
-
-    }
-
-
-    // componentWillUpdate(nextProps, nextState, nextContext) {
-    //     const cookie = new Cookies;
-    //     RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
-    //         params: {
-    //             //Assign limit of row showing in table
-    //             page: 1,
-    //             start: 0,
-    //             limit: 50,
-    //             token: cookie.get('Token')
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (this.state.userData !== response.data.items){
-    //                 this.setState({
-    //                     userData: response.data.items
-    //                 })
-    //             }
-    //         })
-    // }
-
-    onEditUser(){
-
     }
 
 
@@ -74,44 +56,53 @@ class VoucherApi extends Component {
             <>
 
                 {/* ---------------- New Button Start ----------------*/}
-                <div className="ui grid p-3">
-                    <div className="four column row align-items-end">
-                        <div className="ui right floated column">
-                            <Link to='/admin/users/create'>
-                                <button className='ui button primary'>
-                                    New
-                                </button>
-                            </Link>
-                        </div>
+                <div className="ui grid">
+
+                    <div className="ui text-right floated column">
+                        <Link to='/admin/users/create'>
+                            <button className='ui button primary'>
+                                New
+                            </button>
+                        </Link>
                     </div>
                 </div>
 
                 {/* ---------------- New Button End ----------------*/}
 
                 <table className="table table-bordered text-center" style={{fontSize: '20px'}}>
+
                     <thead>
                     <tr className='ct-grid-background border-primary'>
                         <th>
                             <h4 className='text-center'>
                                 Name
                             </h4>
+
                         </th>
 
-                        <th className='d-none d-sm-block'>
-                            <h4 className='text-center'>
-                                Area
-                            </h4>
-                        </th>
+                        {/*<th className='d-none d-sm-block'>*/}
+                        {/*    <h4 className='text-center'>*/}
+                        {/*        Area*/}
+                        {/*    </h4>*/}
+                        {/*</th>*/}
 
                         <th>
                             <h4 className='text-center'>
                                 Balance
                             </h4>
                         </th>
-                        <th>
+                        <th className='w-25'>
                             <h4 className='text-center'>
-                                Status
+                                <Dropdown text='Status' multiple icon='filter'>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Menu scrolling>
+                                            <Dropdown.Item>Active</Dropdown.Item>
+                                            <Dropdown.Item>Inactive</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </h4>
+
                         </th>
                         <th>
                             <h4 className='text-center'>
@@ -126,7 +117,7 @@ class VoucherApi extends Component {
                         return (
                             <tr key={item.id}>
                                 <td data-label="Name">{item.username}</td>
-                                <td className='d-none d-sm-block' data-label="Area">{item.username}</td>
+                                {/*<td className='d-none d-sm-block' data-label="Area">{item.username}</td>*/}
                                 <td data-label="Balance">10$</td>
 
 
@@ -137,7 +128,7 @@ class VoucherApi extends Component {
                                 <td>
                                     <div className="ui toggle checkbox center aligned">
                                         <input type="checkbox" name="public"
-                                               // value={item.active}
+                                            // value={item.active}
                                                onChange={event => this.onHandleChange(event)}
                                                checked={item.active}
                                         />
@@ -150,7 +141,9 @@ class VoucherApi extends Component {
                                     <BiReset/>
                                     <AiOutlineEye/>
                                     {/*<AiFillEdit onClick={this.onEditUser}/>*/}
-                                    <EditUser editId={item.id}/>
+                                    <Link to={'/admin/users/edit/' + item.id}>
+                                        <AiFillEdit/>
+                                    </Link>
                                     <DeleteUser delId={item.id}/>
                                 </td>
 
@@ -161,10 +154,10 @@ class VoucherApi extends Component {
 
                     }
                     </tbody>
-                    <tfoot>
 
 
                     {/*--------------------Pagination------------------------*/}
+                    <tfoot>
                     <tr>
                         <th colSpan={5}>
                             <div className="ui right floated pagination menu">
@@ -182,62 +175,9 @@ class VoucherApi extends Component {
                         </th>
                     </tr>
                     </tfoot>
+                    {/*--------------------Pagination End------------------------*/}
+
                 </table>
-                {/*-------------------Table For User lIst Start -----------------*/}
-
-
-                {/*-------------------Table For User lIst Start -----------------*/}
-
-                {/*<Table className="table-hover table-striped" style={{fontSize: '20px'}}>*/}
-                {/*    <thead>*/}
-                {/*    <tr className='ct-grid-background border-primary'>*/}
-                {/*        <th className="border-0" id='border-0'>*/}
-                {/*            <p>Username</p>*/}
-                {/*            <div className="ui input focus">*/}
-                {/*                <input type="text" placeholder="Search..."/>*/}
-                {/*            </div>*/}
-                {/*        </th>*/}
-                {/*        <th className="border-0" id='border-1'>*/}
-                {/*            <p>Status</p>*/}
-
-                {/*            <Dropdown text='Filter' multiple icon='filter'>*/}
-                {/*                <Dropdown.Menu>*/}
-                {/*                    <Dropdown.Menu scrolling>*/}
-                {/*                        <Dropdown.Item>Active</Dropdown.Item>*/}
-                {/*                        <Dropdown.Item>Inactive</Dropdown.Item>*/}
-                {/*                    </Dropdown.Menu>*/}
-                {/*                </Dropdown.Menu>*/}
-                {/*            </Dropdown>*/}
-
-
-                {/*        </th>*/}
-                {/*        <th className="border-0">*/}
-                {/*            <p>Action</p>*/}
-                {/*        </th>*/}
-                {/*    </tr>*/}
-                {/*    </thead>*/}
-
-                {/*    {(this.state.userData) ? this.state.userData.map((item) => {*/}
-                {/*        return (*/}
-                {/*            <tr key={item.id}>*/}
-                {/*                <td data-label="Name">{item.username}</td>*/}
-                {/*                <td data-label="Status">*/}
-                {/*                    {item.active ? <span className='text-success'>Active</span>*/}
-                {/*                    : <span className='text-danger'>Inactive</span>}</td>*/}
-                {/*                <td data-label="Action">*/}
-                {/*                    <BiReset/>*/}
-                {/*                    <AiOutlineEye/>*/}
-                {/*                    <EditUser editId={item.id}/>*/}
-                {/*                    <DeleteUser delId={item.id}/>*/}
-                {/*                </td>*/}
-                {/*            </tr>*/}
-
-                {/*        )*/}
-                {/*    }) : <Loader type="ThreeDots" color="#00BFFF" height={80} width={80}/>*/}
-
-                {/*    }*/}
-
-                {/*</Table>*/}
             </>
         );
     }
