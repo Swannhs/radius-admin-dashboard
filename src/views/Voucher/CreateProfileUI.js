@@ -3,7 +3,7 @@ import DataLimit from "./DataLimit";
 import TimeLimit from "./TimeLimit";
 import GetOwner from "./GetOwner";
 
-class CreateVoucherUi extends Component {
+class CreateProfileUI extends Component {
     state = {
         undefined: '',
         user_id: 0,
@@ -166,4 +166,4 @@ class CreateVoucherUi extends Component {
     }
 }
 
-export default CreateVoucherUi;
+export default CreateProfileUI;

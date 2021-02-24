@@ -11,15 +11,51 @@ function Header() {
 
     const onLogout = () => {
         const cookie = new Cookies;
-        // cookie.set('Token',null)
         cookie.remove('Token', null);
     }
 
+
+    const mobileSidebarToggle = (e) => {
+        e.preventDefault();
+        document.documentElement.classList.toggle("nav-open");
+        let node = document.createElement("div");
+        node.id = "bodyClick";
+        node.onclick = function () {
+            this.parentElement.removeChild(this);
+            document.documentElement.classList.toggle("nav-open");
+        };
+        document.body.appendChild(node);
+    };
+
+    const getBrandText = () => {
+        for (let i = 0; i < routes.length; i++) {
+            if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
+                return routes[i].name;
+            }
+        }
+        return "Brand";
+    };
 
 
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid>
+                <div className="d-flex justify-content-center align-items-center ml-2 ml-lg-0">
+                    <Button
+                        variant="dark"
+                        className="d-lg-none btn-fill d-flex justify-content-center align-items-center rounded-circle p-2"
+                        onClick={mobileSidebarToggle}
+                    >
+                        <i className="fas fa-ellipsis-v"/>
+                    </Button>
+                    <Navbar.Brand
+                        href="#home"
+                        onClick={(e) => e.preventDefault()}
+                        className="mr-2"
+                    >
+                        {getBrandText()}
+                    </Navbar.Brand>
+                </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="mr-2">
                     <span className="navbar-toggler-bar burger-lines"/>
                     <span className="navbar-toggler-bar burger-lines"/>
@@ -90,7 +126,7 @@ function Header() {
                                 onClick={(e) => e.preventDefault()}
                             >
                                 <i className="nc-icon nc-zoom-split"/>
-                                <span className="d-lg-block"> Search</span>
+                                <span className="d-lg-block"> Search</span>
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>
@@ -104,6 +140,33 @@ function Header() {
                                 <span className="no-icon">Account</span>
                             </Nav.Link>
                         </Nav.Item>
+                        {/*<Dropdown as={Nav.Item}>*/}
+                        {/*  <Dropdown.Toggle*/}
+                        {/*    aria-expanded={false}*/}
+                        {/*    aria-haspopup={true}*/}
+                        {/*    as={Nav.Link}*/}
+                        {/*    data-toggle="dropdown"*/}
+                        {/*    id="navbarDropdownMenuLink"*/}
+                        {/*    variant="default"*/}
+                        {/*    className="m-0"*/}
+                        {/*  >*/}
+                        {/*    <span className="no-icon">CreateUser</span>*/}
+                        {/*  </Dropdown.Toggle>*/}
+                        {/*  <Dropdown.Menu aria-labelledby="navbarDropdownMenuLink">*/}
+                        {/*    <Dropdown.Item*/}
+                        {/*      href="#pablo"*/}
+                        {/*      onClick={(e) => e.preventDefault()}*/}
+                        {/*    >*/}
+                        {/*      Reseller*/}
+                        {/*    </Dropdown.Item>*/}
+                        {/*    <Dropdown.Item*/}
+                        {/*      href="#pablo"*/}
+                        {/*      onClick={(e) => e.preventDefault()}*/}
+                        {/*    >*/}
+                        {/*      User*/}
+                        {/*    </Dropdown.Item>*/}
+                        {/*  </Dropdown.Menu>*/}
+                        {/*</Dropdown>*/}
                         <Nav.Item>
                             <Nav.Link
                                 className="m-0"

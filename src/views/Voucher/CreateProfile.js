@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './CreateVoucher.css';
-import CreateVoucherUi from "./CreateVoucherUI";
+import CreateProfileUI from "./CreateProfileUI";
 import Cookies from "universal-cookie/es6";
 import RadiusApi from "../../radius-api/RadiusApi";
 
 
-class CreateVoucher extends Component {
+class CreateProfile extends Component {
 
     onCreateVoucher = async data => {
 
@@ -22,10 +22,10 @@ class CreateVoucher extends Component {
     render() {
         return (
             <>
-                <CreateVoucherUi onFormSubmit={this.onCreateVoucher}/>
+                <CreateProfileUI onFormSubmit={this.onCreateVoucher}/>
             </>
         );
     }
 }
 
-export default CreateVoucher;
+export default CreateProfile;

@@ -2,8 +2,8 @@ import Dashboard from "views/Dashboard.js";
 import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
 import UserList from "./views/User/UserList";
-import CreateVoucher from "./views/Voucher/CreateVoucher";
 import EditUser from "./views/User/Action/Edit/EditUser";
+import CreateVoucherApi from "./views/Voucher/CreateVoucher/CreateVoucherApi";
 
 const dashboardRoutes = [
     {
@@ -29,7 +29,7 @@ const dashboardRoutes = [
         path: '/voucher/create',
         name: "Reseller",
         icon: "nc-icon fas fa-user-plus",
-        component: CreateVoucher,
+        component: CreateVoucherApi,
         layout: "/admin",
     },
     {
