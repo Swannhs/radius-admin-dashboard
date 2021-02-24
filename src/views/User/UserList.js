@@ -3,7 +3,7 @@ import RadiusApi from "../../radius-api/RadiusApi";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie";
 import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
-import {Dropdown, Loader} from "semantic-ui-react";
+import {Dropdown, Loader, Pagination} from "semantic-ui-react";
 import DeleteUser from "./Action/DeleteUser";
 import {Link} from "react-router-dom";
 
@@ -16,7 +16,10 @@ class VoucherApi extends Component {
             loading: true,
             userData: [],
             active: null,
-            test: ''
+            page: 1,
+            start: 0,
+            limit: 5,
+            total: 0
         }
     }
 
@@ -25,21 +28,31 @@ class VoucherApi extends Component {
         RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
             params: {
                 //Assign limit of row showing in table
-                page: 1,
-                start: 0,
-                limit: 50,
+                page: this.state.page,
+                start: this.state.start,
+                limit: this.state.limit,
                 token: cookie.get('Token')
             }
         })
             .then(response => this.setState({
                 loading: false,
                 userData: response.data.items,
+                total: response.data.totalCount
             }))
     }
 
 
     componentDidMount() {
         this.onApiCall();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        prevState.page !== this.state.page ? this.onApiCall() : null
+    }
+
+    onPagination() {
+        let totalPage = this.state.total / this.state.limit
+        return Math.trunc(totalPage) + parseInt((totalPage % 1).toFixed())
     }
 
 
@@ -69,7 +82,7 @@ class VoucherApi extends Component {
 
                 {/* ---------------- New Button End ----------------*/}
 
-                <table className="table table-bordered text-center" style={{fontSize: '20px'}}>
+                <table className="table table-bordered text-center mt-3" style={{fontSize: '20px'}}>
 
                     <thead>
                     <tr className='ct-grid-background border-primary'>
@@ -161,16 +174,20 @@ class VoucherApi extends Component {
                     <tr>
                         <th colSpan={5}>
                             <div className="ui right floated pagination menu">
-                                <a className="icon item">
-                                    <i className="left chevron icon"/>
-                                </a>
-                                <a className="item">1</a>
-                                <a className="item">2</a>
-                                <a className="item">3</a>
-                                <a className="item">4</a>
-                                <a className="icon item">
-                                    <i className="right chevron icon"/>
-                                </a>
+                                <Pagination
+                                    defaultActivePage={1}
+                                    firstItem={null}
+                                    lastItem={null}
+                                    pointing
+                                    secondary
+                                    totalPages={this.onPagination()}
+                                    onPageChange={(event, data) => {
+                                        this.setState({
+                                            page: data.activePage,
+                                            start: this.state.page * this.state.limit
+                                        })
+                                    }}
+                                />
                             </div>
                         </th>
                     </tr>

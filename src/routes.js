@@ -3,7 +3,7 @@ import CreateUser from "views/User/CreateUser.js";
 import VoucherList from "views/Voucher/VoucherList.js";
 import UserList from "./views/User/UserList";
 import CreateVoucher from "./views/Voucher/CreateVoucher";
-import EditUser from "./views/User/Action/EditUser";
+import EditUser from "./views/User/Action/Edit/EditUser";
 
 const dashboardRoutes = [
     {

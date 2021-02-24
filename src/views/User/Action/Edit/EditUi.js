@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Cookies from "universal-cookie";
-import RadiusApi from "../../../radius-api/RadiusApi";
+import RadiusApi from "../../../../radius-api/RadiusApi";
 import {Link} from "react-router-dom";
 
 class EditUi extends Component {
