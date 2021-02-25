@@ -3,7 +3,7 @@ import RadiusApi from "../../radius-api/RadiusApi";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Cookies from "universal-cookie/lib";
 import {Pagination} from "semantic-ui-react";
-import {AiFillDelete, AiFillEdit, AiOutlineEye, BiReset} from "react-icons/all";
+import {AiOutlineEye, BiReset} from "react-icons/all";
 
 
 class VoucherApi extends Component {
@@ -67,10 +67,7 @@ class VoucherApi extends Component {
                             <td data-label="Action">
                                 <BiReset/>
                                 <AiOutlineEye/>
-                                <AiFillEdit/>
-                                <AiFillDelete/>
                             </td>
-
                         </tr>
                     )
                 }) : null
@@ -99,14 +96,9 @@ class VoucherApi extends Component {
                             />
                         </div>
                     </th>
-
                 </tr>
-
-
                 </tfoot>
-
             </>
-
         );
     }
 }

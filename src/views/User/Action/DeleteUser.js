@@ -2,33 +2,35 @@ import React, {Component} from 'react';
 import RadiusApi from "../../../radius-api/RadiusApi";
 import Cookies from "universal-cookie/lib";
 import {AiFillDelete} from "react-icons/all";
-import UserList from "../UserList";
-import {Redirect} from "react-router";
 
 class DeleteUser extends Component {
 
+    onConfirmDelete = () => {
+        confirm('Delete the user?') ? this.onDeleteUser(this.props.delId): null
+    }
 
-    onDeleteUser = props => {
-        // console.log(this.props.delId)
+    onDeleteUser = (id) => {
         const cookie = new Cookies;
-        RadiusApi.post('/cake3/rd_cake/access-providers/delete.json', {'id': this.props.delId}, {
+        RadiusApi.post('/cake3/rd_cake/access-providers/delete.json', {'id': id}, {
             params: {
                 token: cookie.get('Token')
             }
         })
             .then(response => {
-                    // <Redirect to='/admin/users/view'/>
+                    console.log(response)
                 }
             )
     }
 
+
     render() {
         return (
             <>
-                <AiFillDelete onClick={this.onDeleteUser}/>
+                <AiFillDelete onClick={this.onConfirmDelete}/>
             </>
         );
     }
+
 }
 
 export default DeleteUser;
