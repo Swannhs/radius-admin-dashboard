@@ -15,7 +15,7 @@ class GetOwner extends Component {
     componentDidMount() {
         const cookie = new Cookies;
 
-        RadiusApi.get('/cake3/rd_cake/access-providers/index-tree.json', {
+        RadiusApi.get('/access-providers/index-tree.json', {
             params: {
                 node: 0,
                 token: cookie.get('Token')

@@ -25,7 +25,7 @@ class VoucherApi extends Component {
 
     onApiCall() {
         const cookie = new Cookies;
-        RadiusApi.get('/cake3/rd_cake/access-providers/index.json', {
+        RadiusApi.get('/access-providers/index.json', {
             params: {
                 //Assign limit of row showing in table
                 page: this.state.page,

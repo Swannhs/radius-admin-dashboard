@@ -11,7 +11,7 @@ class CreateProfile extends Component {
 
         const cookie = new Cookies;
 
-        await RadiusApi.post('/cake3/rd_cake/profiles/simple_add.json', data, {
+        await RadiusApi.post('/profiles/simple_add.json', data, {
             params: {
                 token: cookie.get('Token')
             }

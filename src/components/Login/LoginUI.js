@@ -34,7 +34,7 @@ class LoginUI extends Component {
             username: this.state.username,
             password: this.state.password
         }
-        await RadiusApi.post('/cake3/rd_cake/dashboard/authenticate.json', data)
+        await RadiusApi.post('/dashboard/authenticate.json', data)
             .then(response => {
 
                 // Get the token

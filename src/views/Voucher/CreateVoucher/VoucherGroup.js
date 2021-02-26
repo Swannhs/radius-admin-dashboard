@@ -15,7 +15,7 @@ class VoucherGroup extends Component {
     componentDidMount() {
         const cookie = new Cookies;
 
-        RadiusApi.get('/cake3/rd_cake/realms/index-ap-create.json', {
+        RadiusApi.get('/realms/index-ap-create.json', {
             params: {
                 token: cookie.get('Token')
             }

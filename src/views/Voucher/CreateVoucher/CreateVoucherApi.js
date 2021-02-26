@@ -26,12 +26,14 @@ class CreateVoucherApi extends Component {
     onSubmitVoucher = () => {
         const cookie = new Cookies;
         console.log(this.state)
-        RadiusApi.post('/cake3/rd_cake/vouchers/add.json', this.state, {
+        RadiusApi.post('/vouchers/add.json', this.state, {
             params: {
                 token: cookie.get('Token')
             }
         })
-            .then(response => console.log(response))
+            .then(response => {
+                response.data.success ? alert('Voucher Created') : alert('Failed to create voucher')
+            })
     }
 
 

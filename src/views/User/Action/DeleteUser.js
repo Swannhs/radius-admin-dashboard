@@ -11,7 +11,7 @@ class DeleteUser extends Component {
 
     onDeleteUser = (id) => {
         const cookie = new Cookies;
-        RadiusApi.post('/cake3/rd_cake/access-providers/delete.json', {'id': id}, {
+        RadiusApi.post('/access-providers/delete.json', {'id': id}, {
             params: {
                 token: cookie.get('Token')
             }

@@ -10,7 +10,7 @@ class CreateUser extends Component {
 
         const cookie = new Cookies();
 
-        await RadiusApi.post('/cake3/rd_cake/access-providers/add.json', data, {
+        await RadiusApi.post('/access-providers/add.json', data, {
             params: {
                 token: cookie.get('Token')
             }

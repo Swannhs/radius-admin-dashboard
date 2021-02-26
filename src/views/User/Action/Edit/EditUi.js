@@ -16,7 +16,7 @@ class EditUi extends Component {
 
     componentDidMount() {
         const cookie = new Cookies;
-        RadiusApi.get('/cake3/rd_cake/access-providers/view.json', {
+        RadiusApi.get('/access-providers/view.json', {
             params: {
                 ap_id: this.props.id,
                 token: cookie.get('Token')
@@ -36,7 +36,7 @@ class EditUi extends Component {
     onUserEditSubmit = () => {
         const cookie = new Cookies;
         const data = this.state
-        RadiusApi.post('/cake3/rd_cake/access-providers/edit.json', data, {
+        RadiusApi.post('/access-providers/edit.json', data, {
             params: {
                 token: cookie.get('Token')
             }

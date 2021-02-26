@@ -21,7 +21,7 @@ class VoucherApi extends Component {
 
     onApiCall = () => {
         const cookie = new Cookies
-        RadiusApi.get('/cake3/rd_cake/vouchers/index.json', {
+        RadiusApi.get('/vouchers/index.json', {
             params: {
                 page: this.state.page,
                 start: this.state.start,
