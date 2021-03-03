@@ -15,7 +15,7 @@ class VoucherProfile extends Component {
     componentDidMount() {
         const cookie = new Cookies;
 
-        RadiusApi.get('/cake3/rd_cake/profiles/index-ap.json', {
+        RadiusApi.get('/profiles/index-ap.json', {
             params: {
                 token: cookie.get('Token')
             }

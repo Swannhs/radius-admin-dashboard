@@ -116,7 +116,6 @@ class VoucherApi extends Component {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </h4>
-
                         </th>
                         <th>
                             <h4 className='text-center'>

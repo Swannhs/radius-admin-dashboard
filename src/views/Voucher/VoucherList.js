@@ -1,10 +1,54 @@
-import React from "react";
+import React, {useState} from "react";
 import 'reactjs-popup/dist/index.css';
 import VoucherApi from "./VoucherApi";
 import {Link} from "react-router-dom";
+import {Dropdown, FormControl} from "react-bootstrap";
 
 
 function VoucherList() {
+
+    const onFilter = (event) => {
+        console.log(event.target.value)
+    }
+
+    const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
+        <>
+            <h4>
+                Group
+            </h4>
+            <i className="filter icon d-inline cursor-pointer"
+               onClick={(e) => {
+                   e.preventDefault();
+                   onClick(e);
+               }}
+            > Filter</i>
+        </>
+
+
+    ));
+
+// forwardRef again here!
+// Dropdown needs access to the DOM of the Menu to measure it
+    const CustomMenu = React.forwardRef(
+        ({children, style, className, 'aria-labelledby': labeledBy}, ref) => {
+
+            return (
+                <div
+                    ref={ref}
+                    className={className}
+                    aria-labelledby={labeledBy}
+                >
+                    <FormControl
+                        autoFocus
+                        className="mx-3 my-2 w-auto"
+                        placeholder="Type to filter..."
+                        onChange={(event) => onFilter(event)}
+                    />
+                </div>
+            );
+        },
+    );
+
     return (
 
         <>
@@ -35,10 +79,16 @@ function VoucherList() {
                     {/*</th>*/}
 
                     <th>
-                        <h4 className='text-center'>
-                            Group
-                        </h4>
+
+                        <Dropdown className='text-center'>
+                            <Dropdown.Toggle as={CustomToggle}/>
+
+                            <Dropdown.Menu as={CustomMenu}/>
+                        </Dropdown>
+
                     </th>
+
+
                     <th>
                         <h4 className='text-center'>
                             Plan
