@@ -2,27 +2,13 @@ import React, {Component} from 'react';
 import {Form} from "react-bootstrap";
 import Cookies from "universal-cookie/lib";
 import RadiusApi from "../../radius-api/RadiusApi";
-import {Input} from "reactstrap";
 
 class AllUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            select: '',
             users: [],
-            transaction: [
-                {
-                    balance: 0,
-                    created: null,
-                    credit: 100,
-                    debit: 50,
-                    modified: null,
-                    partner_user_id: 0,
-                    profile_id: 4,
-                    realm_id: 2,
-                    transaction_id: '',
-                    user_id: ''
-                }
-            ]
         }
     }
 
@@ -36,6 +22,10 @@ class AllUser extends Component {
                     users: response.data
                 })
             })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        prevState !== this.state ? this.props.onChange(this.state.select): null
     }
 
 
@@ -59,11 +49,8 @@ class AllUser extends Component {
 
                         onChange={event => {
                             this.setState({
-                                transaction: {
-                                    partner_user_id: event.target.value
-                                }
+                                select: event.target.value
                             })
-                            console.log(this.state.transaction.partner_user_id)
                         }}
                     >
                         <option>Choose...</option>
@@ -76,30 +63,6 @@ class AllUser extends Component {
                             )
                         })}
                     </Form.Control>
-                </div>
-
-                <div className='w-50 p-3'>
-                    <Input
-                        type='number'
-                        placeholder='Amount'
-                        // value={this.state.transaction.balance}
-                        onChange={event => {
-                            this.setState({
-                                transaction: {
-                                    balance: event.target.value
-                                }
-                            })
-                        }}
-                    />
-                </div>
-                <div className="form-group">
-                    {/*<Link to='/admin/users/view'>*/}
-                    <button type="submit" className="ui button primary"
-                            onClick={this.onFormSubmit}
-                    >
-                        Create
-                    </button>
-                    {/*</Link>*/}
                 </div>
             </Form.Group>
         );
