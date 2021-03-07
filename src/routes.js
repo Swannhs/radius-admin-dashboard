@@ -1,9 +1,17 @@
 import Dashboard from "views/Dashboard.js";
-import CreateUser from "views/User/CreateUser.js";
-import VoucherList from "views/Voucher/VoucherList.js";
+
 import UserList from "./views/User/UserList";
+import CreateUser from "views/User/CreateUser.js";
 import EditUser from "./views/User/Action/Edit/EditUser";
+
+import VoucherList from "views/Voucher/VoucherList.js";
 import CreateVoucherApi from "./views/Voucher/CreateVoucher/CreateVoucherApi";
+
+import Transfer from "./views/Transaction/Transfer";
+import Transaction from "./views/Transaction/Transaction";
+
+
+
 
 const dashboardRoutes = [
     {
@@ -13,9 +21,11 @@ const dashboardRoutes = [
         component: Dashboard,
         layout: "/admin",
     },
+
+
     {
         path: '/users/view',
-        name: 'UserList',
+        name: 'Users',
         component: UserList,
         layout: '/admin'
     },
@@ -26,27 +36,41 @@ const dashboardRoutes = [
         layout: '/admin'
     },
     {
-        path: '/voucher/create',
-        name: "Reseller",
-        icon: "nc-icon fas fa-user-plus",
-        component: CreateVoucherApi,
-        layout: "/admin",
-    },
-    {
-        path: "/voucher/view",
-        name: "Voucher",
-        icon: "nc-icon fas fa-users",
-        component: VoucherList,
-        layout: "/admin",
-    },
-
-    {
         path: "/users/edit/:id",
         name: "Edit",
         component: EditUser,
         layout: "/admin",
     },
 
+
+
+    {
+        path: '/voucher/create',
+        name: "Reseller",
+        component: CreateVoucherApi,
+        layout: "/admin",
+    },
+    {
+        path: "/voucher/view",
+        name: "Voucher",
+        component: VoucherList,
+        layout: "/admin",
+    },
+
+
+
+    {
+        path: "/transaction",
+        name: "Transaction",
+        component: Transaction,
+        layout: '/admin'
+    },
+    {
+        path: "/transfer",
+        name: "Transfer",
+        component: Transfer,
+        layout: '/admin'
+    },
 ];
 
 export default dashboardRoutes;

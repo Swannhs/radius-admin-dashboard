@@ -125,6 +125,7 @@ class VoucherApi extends Component {
 
                     </tr>
                     </thead>
+
                     <tbody>
                     {(this.state.userData) ? this.state.userData.map((item) => {
                         return (

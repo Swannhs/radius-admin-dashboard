@@ -8,7 +8,6 @@ import routes from "routes.js";
 
 
 function Admin() {
-  const location = useLocation();
   const mainPanel = React.useRef(null);
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {

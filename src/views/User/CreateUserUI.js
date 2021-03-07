@@ -28,12 +28,10 @@ class CreateUserUi extends Component {
         return (
             <>
                 <div className="container" style={{fontSize: '20px'}}>
-                    <div className='col-1'>
-                        <button className='ui button align-left'>
-                            <Link to='/admin/users/view'>
-                                Back
-                            </Link>
-                        </button>
+                    <div className='ml-3'>
+                        <Link to='/admin/users/view'>
+                            <button className='ui button'>Back</button>
+                        </Link>
                     </div>
 
                     <article className="card-body mx-auto" style={{maxWidth: '350px', fontSize: '20px'}}>
